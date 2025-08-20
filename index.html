@@ -7,7 +7,7 @@
   <meta name="description" content="岐阜・KU-DETAのチーズパーティ。チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。"> 
   <meta name="format-detection" content="telephone=no">
 
-  <!-- OGP/Twitter -->
+  <!-- OGP/Twitter（必要に応じてユーザー名/リポ名を置換） -->
   <meta property="og:title" content="チーズパーティ｜KU-DETA" />
   <meta property="og:description" content="チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。" />
   <meta property="og:type" content="website" />
@@ -234,4 +234,147 @@
       <div class="faq" style="margin-top:10px">
         <details><summary>アレルギー対応は可能ですか？</summary><p class="muted">可能な範囲で対応いたします。予約フォームの備考欄にご記入ください。</p></details>
         <details><summary>ドレスコードはありますか？</summary><p class="muted">スマートカジュアルを推奨していますが、厳しい指定はありません。</p></details>
-        <details
+        <details><summary>写真撮影はできますか？</summary><p class="muted">大歓迎です。周囲のお客様へのご配慮をお願いします。</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 予約フォーム -->
+  <section id="reserve-form" class="section">
+    <div class="container">
+      <h2>予約フォーム</h2>
+
+      <!-- 送信後のサンクスメッセージ（初期は非表示） -->
+      <p id="thank-you" style="display:none; font-weight:700; color:#ffd166; font-size:1.1rem;" aria-live="polite">
+        ご予約ありがとうございます！
+      </p>
+
+      <form id="booking" class="card" method="POST" action="https://formspree.io/f/xpwlgjrn" novalidate>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="grid" style="grid-template-columns:1fr 1fr; gap:14px">
+          <label>お名前*<br><input name="name" required></label>
+          <label>フリガナ<br><input name="kana"></label>
+          <label>メール*<br><input type="email" name="email" required></label>
+          <label>電話番号*<br><input type="tel" name="tel" required></label>
+          <label>人数*<br><input type="number" name="people" min="1" max="8" required value="2"></label>
+          <label>ご来店日*<br><input type="date" name="date" required></label>
+          <label>希望時間*<br><input type="time" name="time" required value="18:00"></label>
+          <label>プラン<br>
+            <select name="plan">
+              <option value="standard">スタンダード ¥5,800</option>
+              <option value="pairing">ペアリング付 ¥7,800</option>
+              <option value="vip">VIPテーブル ¥12,000/人</option>
+            </select>
+          </label>
+          <label style="grid-column:1/-1">アレルギー特記事項<br><input name="allergy" placeholder="例：えび・かにNG"></label>
+          <label style="grid-column:1/-1">備考<br><textarea name="note" rows="4" placeholder="記念日、席のご希望など"></textarea></label>
+          <label style="grid-column:1/-1; display:flex; gap:10px; align-items:flex-start">
+            <input type="checkbox" required style="margin-top:6px">
+            <span class="muted">個人情報の取り扱いに同意します（予約確認の目的でのみ利用します）。</span>
+          </label>
+        </div>
+        <input type="hidden" name="_subject" value="[KU-DETA] チーズパーティ 予約">
+        <input type="hidden" name="event" value="Cheese Party 2025-10-05">
+        <div class="cta">
+          <button class="btn" type="submit">送信する</button>
+          <button class="btn ghost" type="reset">リセット</button>
+        </div>
+        <p id="form-status" class="muted" style="margin-top:10px"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <small>© 2025 KU-DETA</small>
+      <div class="sns">
+        <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+        <a href="mailto:kudeta.kanou@gmail.com" aria-label="Email">Email</a>
+        <a href="tel:0580000000" aria-label="Tel">Tel</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 構造化データ（イベント） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "チーズパーティ",
+    "startDate": "2025-10-05T18:00:00+09:00",
+    "endDate": "2025-10-05T21:00:00+09:00",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "location": { "@type": "Place", "name": "KU-DETA", "address": "岐阜市〇〇町1-2-3" },
+    "image": ["https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg"],
+    "description": "KU-DETAの一夜限りのチーズパーティ。チーズとお肉、ワインペアリングを楽しむイベント。",
+    "organizer": { "@type": "Organization", "name": "KU-DETA", "url": "https://kudeta-japan.github.io/cheeseparty/" }
+  }
+  </script>
+
+  <script>
+    // フェードイン
+    const onScroll = () => {
+      document.querySelectorAll('.fade').forEach(el => {
+        const r = el.getBoundingClientRect();
+        if(r.top < window.innerHeight - 80) el.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', onScroll); onScroll();
+
+    // カウントダウン（2025/10/05 18:00 JST）
+    const cd = document.getElementById('countdown');
+    const target = new Date('2025-10-05T18:00:00+09:00').getTime();
+    const tick = () => {
+      const now = Date.now();
+      const d = Math.max(0, target - now);
+      const days = Math.floor(d/86400000);
+      const hours = Math.floor((d%86400000)/3600000);
+      const mins = Math.floor((d%3600000)/60000);
+      const secs = Math.floor((d%60000)/1000);
+      if (cd) cd.innerHTML = `
+        <div class="cd"><b>${days}</b><small class="muted">日</small></div>
+        <div class="cd"><b>${hours}</b><small class="muted">時間</small></div>
+        <div class="cd"><b>${mins}</b><small class="muted">分</small></div>
+        <div class="cd"><b>${secs}</b><small class="muted">秒</small></div>
+      `;
+    };
+    tick(); setInterval(tick, 1000);
+
+    // スムーススクロール
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({behavior:'smooth'});
+        }
+      });
+    });
+
+    // 予約フォーム送信（Formspree）: 成功時にサンクスメッセージを画面表示
+    const form = document.getElementById('booking');
+    const statusEl = document.getElementById('form-status');
+    const thankEl  = document.getElementById('thank-you');
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (statusEl) statusEl.textContent = '送信中…';
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+          if (res.ok) {
+            form.style.display = 'none';
+            if (thankEl) thankEl.style.display = 'block'; // ← ここで「ご予約ありがとうございます！」を表示
+          } else {
+            if (statusEl) statusEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
+          }
+        } catch {
+          if (statusEl) statusEl.textContent = 'ネットワークエラーが発生しました。';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

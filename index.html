@@ -6,15 +6,16 @@
   <title>チーズパーティ｜KU-DETA</title>
   <meta name="description" content="岐阜・KU-DETAのチーズパーティ。チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。"> 
   <meta name="format-detection" content="telephone=no">
-  <!-- Open Graph / Twitter -->
+
+  <!-- OGP/Twitter -->
   <meta property="og:title" content="チーズパーティ｜KU-DETA" />
   <meta property="og:description" content="チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://YOUR_GITHUB_USERNAME.github.io/cheese-party/" />
-  <meta property="og:image" content="https://YOUR_GITHUB_USERNAME.github.io/cheese-party/img/ogp.jpg" />
+  <meta property="og:url" content="https://kudeta-japan.github.io/cheeseparty/" />
+  <meta property="og:image" content="https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg" />
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon (任意) -->
+  <!-- Favicon（任意） -->
   <link rel="icon" href="/img/favicon.png">
 
   <style>
@@ -22,7 +23,8 @@
       --bg:#0b0b10; --surface:#121219; --muted:#1b1b26; --brand:#ffd166; --accent:#ef476f; --ok:#06d6a0; --text:#f2f2f7; --sub:#b5b5c2;
       --max:1100px; --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.25);
     }
-    html,body{margin:0;background:linear-gradient(180deg,#0a0a0f, #11111a);color:var(--text);font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "YuGothic", Meiryo, sans-serif;}
+    html,body{margin:0;background:linear-gradient(180deg,#0a0a0f, #11111a);color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "YuGothic", Meiryo, sans-serif;}
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
     .container{max-width:var(--max);margin-inline:auto;padding:0 20px}
@@ -32,7 +34,7 @@
     .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 20px var(--brand)}
     .nav a{opacity:.9}
     .nav .links{display:flex;gap:18px}
-    .btn{display:inline-flex;gap:.5rem;align-items:center;padding:.9rem 1.1rem;border-radius:14px;background:var(--brand);color:#1a1a1a;font-weight:700;box-shadow:var(--shadow);transition:transform .15s ease, filter .2s}
+    .btn{display:inline-flex;gap:.5rem;align-items:center;padding:.9rem 1.1rem;border-radius:14px;background:var(--brand);color:#1a1a1a;font-weight:700;box-shadow:var(--shadow);transition:transform .15s ease}
     .btn:hover{transform:translateY(-2px)}
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
 
@@ -45,7 +47,8 @@
     .grid{display:grid;gap:18px}
     @media(min-width:880px){.grid-2{grid-template-columns:1.2fr .8fr}}
 
-    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
     .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
     .kpi{background:var(--muted);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;text-align:center}
     .kpi b{display:block;font-size:clamp(18px,3.6vw,28px)}
@@ -86,6 +89,11 @@
     /* simple animations */
     .fade{opacity:0;transform:translateY(8px);transition:all .6s ease}
     .fade.show{opacity:1;transform:none}
+
+    /* inputs */
+    input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);color:var(--text);outline:none}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 2px rgba(255,209,102,.35)}
   </style>
 </head>
 <body>
@@ -97,7 +105,7 @@
         <a href="#menu">メニュー</a>
         <a href="#tickets">チケット</a>
         <a href="#access">アクセス</a>
-        <a class="btn" href="#reserve">予約する</a>
+        <a class="btn" href="#reserve-form">予約する</a>
       </nav>
     </div>
   </header>
@@ -110,7 +118,7 @@
         <p class="lead">限定メニューとワインペアリングで楽しむ一夜限りのチーズパーティ。女子会やご夫婦、ご友人とぜひ。</p>
         <div class="countdown" id="countdown" aria-label="開催までのカウントダウン"></div>
         <div class="cta">
-          <a class="btn" id="reserve" href="https://forms.gle/your-form" target="_blank" rel="noopener">今すぐ予約</a>
+          <a class="btn" id="reserve" href="#reserve-form">今すぐ予約</a>
           <a class="btn ghost" href="#menu">メニューを見る</a>
         </div>
         <div class="kpis">
@@ -138,18 +146,9 @@
       <h2>イベント概要</h2>
       <p class="muted">KU-DETAの人気メニューに、チーズを主役にした一夜限定アレンジを加えてご提供。赤身ステーキやビーフカツ、2種のパスタ、チーズフォンデュなど、ワインに合う内容でお届けします。Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> でも最新情報を発信中。</p>
       <div class="features" style="margin-top:18px">
-        <div class="feature">
-          <h3>① 赤身×チーズ</h3>
-          <p>脂身に頼らず旨みの濃い赤身肉を、とろけるチーズで引き立てます。</p>
-        </div>
-        <div class="feature">
-          <h3>② ワインペアリング</h3>
-          <p>お料理ごとにおすすめグラスをご用意。ノンアルも充実。</p>
-        </div>
-        <div class="feature">
-          <h3>③ フォトジェニック</h3>
-          <p>思わずシェアしたくなる演出。#KUDETA #チーズパーティ</p>
-        </div>
+        <div class="feature"><h3>① 赤身×チーズ</h3><p>脂身に頼らず旨みの濃い赤身肉を、とろけるチーズで引き立てます。</p></div>
+        <div class="feature"><h3>② ワインペアリング</h3><p>お料理ごとにおすすめグラスをご用意。ノンアルも充実。</p></div>
+        <div class="feature"><h3>③ フォトジェニック</h3><p>思わずシェアしたくなる演出。#KUDETA #チーズパーティ</p></div>
       </div>
     </div>
   </section>
@@ -160,31 +159,19 @@
       <div class="menu" style="margin-top:8px">
         <div class="menu-item">
           <img src="img/menu-steak.jpg" alt="赤身ステーキとチーズ">
-          <div>
-            <h3>赤身ステーキ×ラクレット</h3>
-            <p class="muted">KU-DETA名物の赤身ステーキに、熱々ラクレットをたっぷり。</p>
-          </div>
+          <div><h3>赤身ステーキ×ラクレット</h3><p class="muted">KU-DETA名物の赤身ステーキに、熱々ラクレットをたっぷり。</p></div>
         </div>
         <div class="menu-item">
           <img src="img/menu-cutlet.jpg" alt="ビーフカツ">
-          <div>
-            <h3>ビーフカツ レフォール＆チーズ</h3>
-            <p class="muted">サクッと揚げたビーフカツを、香り高いアクセントで。</p>
-          </div>
+          <div><h3>ビーフカツ レフォール＆チーズ</h3><p class="muted">サクッと揚げたビーフカツを、香り高いアクセントで。</p></div>
         </div>
         <div class="menu-item">
           <img src="img/menu-fondue.jpg" alt="チーズフォンデュ">
-          <div>
-            <h3>チーズフォンデュ</h3>
-            <p class="muted">季節野菜とパン、ソーセージを熱々のまま。</p>
-          </div>
+          <div><h3>チーズフォンデュ</h3><p class="muted">季節野菜とパン、ソーセージを熱々のまま。</p></div>
         </div>
         <div class="menu-item">
           <img src="img/menu-pasta.jpg" alt="2種のボロネーゼ">
-          <div>
-            <h3>2種のボロネーゼ</h3>
-            <p class="muted">粗挽きビーフ＆スジ肉赤ワイン煮のWソースで食べ比べ。</p>
-          </div>
+          <div><h3>2種のボロネーゼ</h3><p class="muted">粗挽きビーフ＆スジ肉赤ワイン煮のWソースで食べ比べ。</p></div>
         </div>
       </div>
       <p class="muted" style="margin-top:10px">※仕入れ状況で変更となる場合があります。</p>
@@ -199,32 +186,23 @@
           <h3>スタンダード</h3>
           <p class="muted">お料理コース＋1ドリンク</p>
           <p><b>¥5,800</b>（税込）</p>
-          <ul class="muted">
-            <li>席数限定</li>
-            <li>追加ドリンク別</li>
-          </ul>
+          <ul class="muted"><li>席数限定</li><li>追加ドリンク別</li></ul>
         </div>
         <div class="plan" style="border:2px solid var(--brand)">
           <h3>ペアリング付（おすすめ）</h3>
           <p class="muted">お料理コース＋選べる3杯</p>
           <p><b>¥7,800</b>（税込）</p>
-          <ul class="muted">
-            <li>ワインまたはノンアル</li>
-            <li>記念フォトカード</li>
-          </ul>
+          <ul class="muted"><li>ワインまたはノンアル</li><li>記念フォトカード</li></ul>
         </div>
         <div class="plan">
           <h3>VIPテーブル</h3>
           <p class="muted">お料理コース＋ボトル1本</p>
           <p><b>¥12,000</b>（税込/1名）</p>
-          <ul class="muted">
-            <li>窓側確約（2〜4名）</li>
-            <li>限定アミューズ</li>
-          </ul>
+          <ul class="muted"><li>窓側確約（2〜4名）</li><li>限定アミューズ</li></ul>
         </div>
       </div>
       <div class="cta">
-        <a class="btn" href="https://forms.gle/your-form" target="_blank" rel="noopener">Googleフォームで予約</a>
+        <a class="btn" href="#reserve-form">このページから予約</a>
         <a class="btn ghost" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener">LINEで問い合わせ</a>
       </div>
       <p class="muted" style="margin-top:8px">キャンセルポリシー：前日50%／当日100%</p>
@@ -254,99 +232,6 @@
     <div class="container">
       <h2>よくあるご質問</h2>
       <div class="faq" style="margin-top:10px">
-        <details>
-          <summary>アレルギー対応は可能ですか？</summary>
-          <p class="muted">可能な範囲で対応いたします。予約フォームの備考欄にご記入ください。</p>
-        </details>
-        <details>
-          <summary>ドレスコードはありますか？</summary>
-          <p class="muted">スマートカジュアルを推奨していますが、厳しい指定はありません。</p>
-        </details>
-        <details>
-          <summary>写真撮影はできますか？</summary>
-          <p class="muted">大歓迎です。周囲のお客様へのご配慮をお願いします。</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <small>© 2025 KU-DETA</small>
-      <div class="sns">
-        <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-        <a href="mailto:info@example.com" aria-label="Email">Email</a>
-        <a href="tel:0580000000" aria-label="Tel">Tel</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 構造化データ（イベント） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "チーズパーティ",
-    "startDate": "2025-10-05T18:00:00+09:00",
-    "endDate": "2025-10-05T21:00:00+09:00",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": {
-      "@type": "Place",
-      "name": "KU-DETA",
-      "address": "岐阜市〇〇町1-2-3"
-    },
-    "image": [
-      "https://YOUR_GITHUB_USERNAME.github.io/cheese-party/img/ogp.jpg"
-    ],
-    "description": "KU-DETAの一夜限りのチーズパーティ。チーズとお肉、ワインペアリングを楽しむイベント。",
-    "organizer": {
-      "@type": "Organization",
-      "name": "KU-DETA",
-      "url": "https://YOUR_GITHUB_USERNAME.github.io/cheese-party/"
-    }
-  }
-  </script>
-
-  <script>
-    // シンプルなフェードイン
-    const onScroll = () => {
-      document.querySelectorAll('.fade').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 80) el.classList.add('show');
-      });
-    };
-    window.addEventListener('scroll', onScroll); onScroll();
-
-    // カウントダウン（2025/10/05 18:00 JST）
-    const cd = document.getElementById('countdown');
-    const target = new Date('2025-10-05T18:00:00+09:00').getTime();
-    const tick = () => {
-      const now = Date.now();
-      const d = Math.max(0, target - now);
-      const days = Math.floor(d/86400000);
-      const hours = Math.floor((d%86400000)/3600000);
-      const mins = Math.floor((d%3600000)/60000);
-      const secs = Math.floor((d%60000)/1000);
-      cd.innerHTML = `
-        <div class="cd"><b>${days}</b><small class="muted">日</small></div>
-        <div class="cd"><b>${hours}</b><small class="muted">時間</small></div>
-        <div class="cd"><b>${mins}</b><small class="muted">分</small></div>
-        <div class="cd"><b>${secs}</b><small class="muted">秒</small></div>
-      `;
-    };
-    tick(); setInterval(tick, 1000);
-
-    // スムーススクロール
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if(href.length>1){
-          e.preventDefault();
-          document.querySelector(href).scrollIntoView({behavior:'smooth'});
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+        <details><summary>アレルギー対応は可能ですか？</summary><p class="muted">可能な範囲で対応いたします。予約フォームの備考欄にご記入ください。</p></details>
+        <details><summary>ドレスコードはありますか？</summary><p class="muted">スマートカジュアルを推奨していますが、厳しい指定はありません。</p></details>
+        <details

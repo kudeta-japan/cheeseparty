@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>チーズパーティ｜KU-DETA</title>
-  <meta name="description" content="岐阜・KU-DETAのチーズパーティ。チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。"> 
+  <title>CHEESE WONDERLAND｜KU-DETA</title>
+  <meta name="description" content="とろけて・食べて・遊べるチーズテーマパーク。10/5(日) 17:30–20:00｜1ドリンク付 ¥3,000｜岐阜・KU-DETAで開催。Raclette Slider / Chicago Waterfall / Melty Dip Pot ほかライブ演出多数。男性・お一人様歓迎。"> 
   <meta name="format-detection" content="telephone=no">
 
-  <!-- OGP/Twitter（必要に応じてユーザー名/リポ名を置換） -->
-  <meta property="og:title" content="チーズパーティ｜KU-DETA" />
-  <meta property="og:description" content="チーズとお肉で乾杯！限定メニュー＆ワインペアリング、10/5(日)開催。" />
+  <!-- OGP/Twitter -->
+  <meta property="og:title" content="CHEESE WONDERLAND｜KU-DETA" />
+  <meta property="og:description" content="10/5(日) 17:30–20:00｜1ドリンク付 ¥3,000。とろけて・食べて・遊べるチーズテーマパーク！" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kudeta-japan.github.io/cheeseparty/" />
-  <meta property="og:image" content="https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg" />
+  <meta property="og:url" content="https://kudeta-japan.github.io/cheesewonderland/" />
+  <meta property="og:image" content="https://kudeta-japan.github.io/cheesewonderland/img/ogp.jpg" />
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Favicon（任意） -->
@@ -39,7 +39,7 @@
     .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
 
     .hero{position:relative;}
-    .hero::before{content:"";position:absolute;inset:0;background:url('img/hero.jpg') center/cover no-repeat;opacity:.25;filter:grayscale(.1) contrast(1.1)}
+    .hero::before{content:"";position:absolute;inset:0;background:url('img/hero_cheese.jpg') center/cover no-repeat;opacity:.28;filter:grayscale(.1) contrast(1.12)}
     .hero .inner{position:relative;padding:84px 0 60px}
     .hero h1{font-size: clamp(32px, 5vw, 56px);line-height:1.05;margin:0 0 18px}
     .hero p.lead{font-size:clamp(16px,2.2vw,20px);color:var(--sub);margin:0 0 26px}
@@ -67,16 +67,19 @@
     .section h2{font-size: clamp(24px, 3.6vw, 36px);margin:0 0 14px}
     .muted{color:var(--sub)}
 
+    .attractions{display:grid;gap:18px}
+    @media(min-width:900px){.attractions{grid-template-columns:repeat(3,1fr)}}
+    .attr{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .attr img{width:92px;height:92px;border-radius:12px;object-fit:cover}
+
+    .gallery{display:grid;gap:12px;margin-top:14px}
+    @media(min-width:900px){.gallery{grid-template-columns:2fr 1fr 1fr}}
+    .gallery figure{margin:0;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+    .gallery figcaption{font-size:.85rem;color:var(--sub);padding:8px 10px}
+
     .pricing{display:grid;gap:18px}
     @media(min-width:860px){.pricing{grid-template-columns:repeat(3,1fr)}}
     .plan{padding:22px;border-radius:16px;background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
-    .plan h3{margin:.2rem 0}
-    .plan ul{margin:10px 0 0;padding-left:18px}
-
-    .menu{display:grid;gap:18px}
-    @media(min-width:880px){.menu{grid-template-columns:repeat(2,1fr)}}
-    .menu-item{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
-    .menu-item img{width:84px;height:84px;border-radius:12px;object-fit:cover}
 
     .faq details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
     .faq details+details{margin-top:12px}
@@ -99,11 +102,12 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="brand"><span class="dot"></span>チーズパーティ</div>
+      <div class="brand"><span class="dot"></span>CHEESE WONDERLAND</div>
       <nav class="links">
         <a href="#about">概要</a>
-        <a href="#menu">メニュー</a>
+        <a href="#attractions">アトラクション</a>
         <a href="#tickets">チケット</a>
+        <a href="#faq">FAQ</a>
         <a href="#access">アクセス</a>
         <a class="btn" href="#reserve-form">予約する</a>
       </nav>
@@ -113,30 +117,31 @@
   <section class="hero">
     <div class="container inner grid grid-2">
       <div>
-        <span class="chip">10/5(日) 開催｜岐阜 KU-DETA</span>
-        <h1>チーズとお肉に囲まれる夜。<br>スペシャルに、おいしく。</h1>
-        <p class="lead">限定メニューとワインペアリングで楽しむ一夜限りのチーズパーティ。女子会やご夫婦、ご友人とぜひ。</p>
+        <span class="chip">10/5(日) 17:30–20:00｜岐阜 KU-DETA</span>
+        <h1>とろけて・食べて・遊べるチーズテーマパーク<br><small style="font-size:65%">Melt, Taste & Play!</small></h1>
+        <p class="lead">日曜夕方を“テーマパーク発想”で楽しむ周遊イベント。カジュアルで楽しいライブ演出が満載。男性・お一人様も歓迎です。</p>
         <div class="countdown" id="countdown" aria-label="開催までのカウントダウン"></div>
         <div class="cta">
           <a class="btn" id="reserve" href="#reserve-form">今すぐ予約</a>
-          <a class="btn ghost" href="#menu">メニューを見る</a>
+          <a class="btn ghost" href="#attractions">見どころを見る</a>
         </div>
         <div class="kpis">
-          <div class="kpi"><span class="muted">日時</span><b>2025/10/5(日) 18:00〜</b></div>
-          <div class="kpi"><span class="muted">定員</span><b>40名</b></div>
+          <div class="kpi"><span class="muted">参加費</span><b>¥3,000（1ドリンク付）</b></div>
+          <div class="kpi"><span class="muted">定員</span><b>20–30名</b></div>
           <div class="kpi"><span class="muted">会場</span><b>KU-DETA（岐阜市）</b></div>
         </div>
       </div>
       <div class="card">
         <h3 style="margin-top:4px">当日の流れ</h3>
         <ol class="muted" style="line-height:1.8">
-          <li>17:30 受付開始（1ドリンク選択）</li>
-          <li>18:00 スタート＆乾杯</li>
-          <li>19:00 温菜＆メイン</li>
-          <li>20:00 チーズスペシャリテ</li>
-          <li>20:30 デザート＆お開き</li>
+          <li>17:30 受付・パスポート配布・フォト</li>
+          <li>17:45 オープニング（注意/遊び方）</li>
+          <li>17:50–19:15 周遊（3ステーション×各8–10分目安）</li>
+          <li>19:15–19:35 フリー周遊 & スタンプコンプ</li>
+          <li>19:35 フィナーレ：ラクレット・スライダー一斉演出</li>
+          <li>19:50 ラストオーダー → 20:00 クローズ</li>
         </ol>
-        <p class="muted" style="margin-top:8px">※構成は当日の仕入れで一部変更になる場合があります。</p>
+        <p class="muted" style="margin-top:8px">#とろける日曜日｜ハッシュタグは <b>#CheeseWonderland</b> <b>#とろける日曜日</b> <b>#KUDETA</b></p>
       </div>
     </div>
   </section>
@@ -144,37 +149,59 @@
   <section id="about" class="section">
     <div class="container">
       <h2>イベント概要</h2>
-      <p class="muted">KU-DETAの人気メニューに、チーズを主役にした一夜限定アレンジを加えてご提供。赤身ステーキやビーフカツ、2種のパスタ、チーズフォンデュなど、ワインに合う内容でお届けします。Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> でも最新情報を発信中。</p>
+      <p class="muted">CHEESE WONDERLAND は、チーズを主役にした“周遊型”ミニテーマパーク。ライブでとろける <b>Raclette Slider</b>、チーズ滝の <b>Chicago Waterfall</b>、遊べるディップ <b>Melty Dip Pot</b>、DIYピザの<b>Cheese Lab</b>、ふわ仕上げの<b>Espuma Basque</b>まで、写真映えと体験をセットで楽しめます。</p>
+
       <div class="features" style="margin-top:18px">
-        <div class="feature"><h3>① 赤身×チーズ</h3><p>脂身に頼らず旨みの濃い赤身肉を、とろけるチーズで引き立てます。</p></div>
-        <div class="feature"><h3>② ワインペアリング</h3><p>お料理ごとにおすすめグラスをご用意。ノンアルも充実。</p></div>
-        <div class="feature"><h3>③ フォトジェニック</h3><p>思わずシェアしたくなる演出。#KUDETA #チーズパーティ</p></div>
+        <div class="feature"><h3>① ライブ演出</h3><p>削る・伸びる・仕上げる。目の前で“とろける瞬間”。</p></div>
+        <div class="feature"><h3>② 周遊パスポート</h3><p>3ステーションを順番に巡ってスタンプ集め。</p></div>
+        <div class="feature"><h3>③ カジュアル＆フォト</h3><p>難しくない、でも“映える”。友だちとも一人でも。</p></div>
+      </div>
+
+      <!-- ギャラリー（イメージ画像） -->
+      <div class="gallery">
+        <figure>
+          <img src="img/gal_raclette.jpg" alt="ラクレットをとろりと削ってのせる様子（イメージ）" loading="lazy">
+          <figcaption>Raclette Slider（イメージ）</figcaption>
+        </figure>
+        <figure>
+          <img src="img/gal_chicago.jpg" alt="シカゴピザを持ち上げてチーズが滝のように伸びる（イメージ）" loading="lazy">
+          <figcaption>Chicago Waterfall（イメージ）</figcaption>
+        </figure>
+        <figure>
+          <img src="img/gal_lab.jpg" alt="小さなピザにチーズをのせてDIYする（イメージ）" loading="lazy">
+          <figcaption>Cheese Lab – DIY Quadro Pizza（イメージ）</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section id="menu" class="section">
+  <section id="attractions" class="section">
     <div class="container">
-      <h2>メニュー（予定）</h2>
-      <div class="menu" style="margin-top:8px">
-        <div class="menu-item">
-          <img src="img/menu-steak.jpg" alt="赤身ステーキとチーズ">
-          <div><h3>赤身ステーキ×ラクレット</h3><p class="muted">KU-DETA名物の赤身ステーキに、熱々ラクレットをたっぷり。</p></div>
+      <h2>5大アトラクション</h2>
+      <div class="attractions" style="margin-top:10px">
+        <div class="attr">
+          <img src="img/attr_raclette.jpg" alt="半玉ラクレットを削るライブ（イメージ）">
+          <div><h3>Raclette Slider</h3><p class="muted">半玉ラクレットを目の前でとろ〜り。ポテトなどにオン。1卓あたり3–4分（写真タイム込み）。</p></div>
         </div>
-        <div class="menu-item">
-          <img src="img/menu-cutlet.jpg" alt="ビーフカツ">
-          <div><h3>ビーフカツ レフォール＆チーズ</h3><p class="muted">サクッと揚げたビーフカツを、香り高いアクセントで。</p></div>
+        <div class="attr">
+          <img src="img/attr_chicago.jpg" alt="シカゴピザのリフトアップでチーズが伸びる（イメージ）">
+          <div><h3>Chicago Waterfall</h3><p class="muted">6inchシカゴピザの“チーズ滝”。リフトアップで伸び対決。カット60秒＋撮影60秒。</p></div>
         </div>
-        <div class="menu-item">
-          <img src="img/menu-fondue.jpg" alt="チーズフォンデュ">
-          <div><h3>チーズフォンデュ</h3><p class="muted">季節野菜とパン、ソーセージを熱々のまま。</p></div>
+        <div class="attr">
+          <img src="img/attr_meltydip.jpg" alt="ディップポットとルーレットトッピング（イメージ）">
+          <div><h3>Melty Dip Pot</h3><p class="muted">ルーレットでトッピング → 10回ミックス → ディップ開始。伸びを測って“追いチーズ券”も！</p></div>
         </div>
-        <div class="menu-item">
-          <img src="img/menu-pasta.jpg" alt="2種のボロネーゼ">
-          <div><h3>2種のボロネーゼ</h3><p class="muted">粗挽きビーフ＆スジ肉赤ワイン煮のWソースで食べ比べ。</p></div>
+        <div class="attr">
+          <img src="img/attr_lab.jpg" alt="4種チーズから選べるミニピザDIY（イメージ）">
+          <div><h3>Cheese Lab – DIY Quadro Pizza</h3><p class="muted">モッツァレラ／ゴルゴンゾーラ／ゴーダ／パルミジャーノからセレクト。焼き上がりをパチリ。</p></div>
+        </div>
+        <div class="attr">
+          <img src="img/attr_espuma.jpg" alt="バスクチーズケーキにエスプーマをのせる（イメージ）">
+          <div><h3>Espuma Basque Cloud</h3><p class="muted">5inchホールの1/12カットに、ふわエスプーマをライブ仕上げ。ライトな甘さで締め。</p></div>
         </div>
       </div>
-      <p class="muted" style="margin-top:10px">※仕入れ状況で変更となる場合があります。</p>
+
+      <p class="muted" style="margin-top:8px">ウェルカム：フレッシュチーズ×蜂蜜/果実/ナッツの“前菜ステーション”をご用意。</p>
     </div>
   </section>
 
@@ -182,30 +209,49 @@
     <div class="container">
       <h2>チケット</h2>
       <div class="pricing" style="margin-top:12px">
-        <div class="plan">
-          <h3>スタンダード</h3>
-          <p class="muted">お料理コース＋1ドリンク</p>
-          <p><b>¥5,800</b>（税込）</p>
-          <ul class="muted"><li>席数限定</li><li>追加ドリンク別</li></ul>
-        </div>
         <div class="plan" style="border:2px solid var(--brand)">
-          <h3>ペアリング付（おすすめ）</h3>
-          <p class="muted">お料理コース＋選べる3杯</p>
-          <p><b>¥7,800</b>（税込）</p>
-          <ul class="muted"><li>ワインまたはノンアル</li><li>記念フォトカード</li></ul>
+          <h3>入場パス（1ドリンク付）</h3>
+          <p class="muted">周遊アトラクション＋ウェルカム前菜</p>
+          <p><b>¥3,000</b>（税込）</p>
+          <ul class="muted">
+            <li>追加ドリンク +¥600〜</li>
+            <li>追いチーズ +¥200</li>
+            <li>男性・お一人様歓迎</li>
+          </ul>
         </div>
         <div class="plan">
-          <h3>VIPテーブル</h3>
-          <p class="muted">お料理コース＋ボトル1本</p>
-          <p><b>¥12,000</b>（税込/1名）</p>
-          <ul class="muted"><li>窓側確約（2〜4名）</li><li>限定アミューズ</li></ul>
+          <h3>注意事項</h3>
+          <ul class="muted" style="margin:0 0 8px 18px">
+            <li>20歳未満の方へのアルコール提供はありません（年齢確認あり）。</li>
+            <li>アレルギーは予約時にご申告ください。チーズ少なめ皿に切替可能。</li>
+            <li>ライブ演出につき、撮影列が厨房動線を塞がないようご協力ください。</li>
+          </ul>
+        </div>
+        <div class="plan">
+          <h3>開催情報</h3>
+          <ul class="muted" style="margin:0 0 8px 18px">
+            <li>日時：2025/10/05(日) 17:30–20:00（所要150分）</li>
+            <li>会場：KU-DETA, Gifu</li>
+            <li>定員：20–30名（先着）</li>
+          </ul>
         </div>
       </div>
       <div class="cta">
         <a class="btn" href="#reserve-form">このページから予約</a>
-        <a class="btn ghost" href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" rel="noopener">LINEで問い合わせ</a>
+        <a class="btn ghost" href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">Instagramで最新情報</a>
       </div>
       <p class="muted" style="margin-top:8px">キャンセルポリシー：前日50%／当日100%</p>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container">
+      <h2>よくあるご質問</h2>
+      <div class="faq" style="margin-top:10px">
+        <details><summary>一人参加でもOK？</summary><p class="muted">大歓迎です。席はミックスでご案内します。</p></details>
+        <details><summary>アルコール必須？</summary><p class="muted">ソフトドリンクも選べます。20歳未満の方への提供は行いません。</p></details>
+        <details><summary>乳不耐・アレルギーが心配</summary><p class="muted">“チーズ少なめ皿”に切替可能。予約時にお知らせください。</p></details>
+      </div>
     </div>
   </section>
 
@@ -219,22 +265,10 @@
           <p class="muted">〇〇駅より徒歩7分。近隣にコインP多数あり。</p>
         </div>
         <div class="card">
-          <!-- Google Map 埋め込み（差し替え） -->
           <div style="position:relative; padding-top:56.25%">
             <iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!..." style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="section">
-    <div class="container">
-      <h2>よくあるご質問</h2>
-      <div class="faq" style="margin-top:10px">
-        <details><summary>アレルギー対応は可能ですか？</summary><p class="muted">可能な範囲で対応いたします。予約フォームの備考欄にご記入ください。</p></details>
-        <details><summary>ドレスコードはありますか？</summary><p class="muted">スマートカジュアルを推奨していますが、厳しい指定はありません。</p></details>
-        <details><summary>写真撮影はできますか？</summary><p class="muted">大歓迎です。周囲のお客様へのご配慮をお願いします。</p></details>
       </div>
     </div>
   </section>
@@ -244,7 +278,6 @@
     <div class="container">
       <h2>予約フォーム</h2>
 
-      <!-- 送信後のサンクスメッセージ（初期は非表示） -->
       <p id="thank-you" style="display:none; font-weight:700; color:#ffd166; font-size:1.1rem;" aria-live="polite">
         ご予約ありがとうございます！
       </p>
@@ -253,34 +286,32 @@
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="grid" style="grid-template-columns:1fr 1fr; gap:14px">
           <label>お名前*<br><input name="name" required></label>
-          <label>フリガナ<br><input name="kana"></label>
           <label>メール*<br><input type="email" name="email" required></label>
           <label>電話番号*<br><input type="tel" name="tel" required></label>
-          <label>人数*<br><input type="number" name="people" min="1" max="8" required value="2"></label>
-          <label>ご来店日*<br><input type="date" name="date" required></label>
-          <label>希望時間*<br><input type="time" name="time" required value="18:00"></label>
-          <label>プラン<br>
-            <select name="plan">
-              <option value="standard">スタンダード ¥5,800</option>
-              <option value="pairing">ペアリング付 ¥7,800</option>
-              <option value="vip">VIPテーブル ¥12,000/人</option>
-            </select>
+          <label>人数*<br><input type="number" name="people" min="1" max="6" required value="2"></label>
+          <label>ご来店日*<br><input type="date" name="date" required value="2025-10-05" readonly></label>
+          <label>希望時間*<br><input type="time" name="time" required value="17:30"></label>
+          <label style="grid-column:1/-1">オプション（任意）<br>
+            <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" name="opt_extra_cheese" value="yes"> 追いチーズ +¥200</label>
+            <label style="display:flex;gap:8px;align-items:center;margin:.2rem 0"><input type="checkbox" name="opt_extra_drink" value="yes"> 追加ドリンク +¥600〜</label>
           </label>
-          <label style="grid-column:1/-1">アレルギー特記事項<br><input name="allergy" placeholder="例：えび・かにNG"></label>
-          <label style="grid-column:1/-1">備考<br><textarea name="note" rows="4" placeholder="記念日、席のご希望など"></textarea></label>
+          <label style="grid-column:1/-1">アレルギー特記事項<br><input name="allergy" placeholder="例：乳不耐あり、チーズ少なめ希望"></label>
+          <label style="grid-column:1/-1">備考<br><textarea name="note" rows="4" placeholder="お連れさまの人数変更、写真NGなど"></textarea></label>
           <label style="grid-column:1/-1; display:flex; gap:10px; align-items:flex-start">
             <input type="checkbox" required style="margin-top:6px">
             <span class="muted">個人情報の取り扱いに同意します（予約確認の目的でのみ利用します）。</span>
           </label>
         </div>
-        <input type="hidden" name="_subject" value="[KU-DETA] チーズパーティ 予約">
-        <input type="hidden" name="event" value="Cheese Party 2025-10-05">
+        <input type="hidden" name="_subject" value="[KU-DETA] CHEESE WONDERLAND 予約">
+        <input type="hidden" name="event" value="CHEESE WONDERLAND 2025-10-05">
         <div class="cta">
           <button class="btn" type="submit">送信する</button>
           <button class="btn ghost" type="reset">リセット</button>
         </div>
         <p id="form-status" class="muted" style="margin-top:10px"></p>
       </form>
+
+      <p class="muted" style="margin-top:12px">お問い合わせ：Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> / Tel 058-xxx-xxxx</p>
     </div>
   </section>
 
@@ -300,15 +331,22 @@
   {
     "@context": "https://schema.org",
     "@type": "Event",
-    "name": "チーズパーティ",
-    "startDate": "2025-10-05T18:00:00+09:00",
-    "endDate": "2025-10-05T21:00:00+09:00",
+    "name": "CHEESE WONDERLAND",
+    "startDate": "2025-10-05T17:30:00+09:00",
+    "endDate": "2025-10-05T20:00:00+09:00",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "KU-DETA", "address": "岐阜市〇〇町1-2-3" },
-    "image": ["https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg"],
-    "description": "KU-DETAの一夜限りのチーズパーティ。チーズとお肉、ワインペアリングを楽しむイベント。",
-    "organizer": { "@type": "Organization", "name": "KU-DETA", "url": "https://kudeta-japan.github.io/cheeseparty/" }
+    "image": ["https://kudeta-japan.github.io/cheesewonderland/img/ogp.jpg"],
+    "description": "とろけて・食べて・遊べるチーズテーマパーク。Raclette Slider / Chicago Waterfall / Melty Dip Pot / Cheese Lab / Espuma Basque.",
+    "offers": {
+      "@type": "Offer",
+      "price": "3000",
+      "priceCurrency": "JPY",
+      "availability": "https://schema.org/InStock",
+      "url": "https://kudeta-japan.github.io/cheesewonderland/"
+    },
+    "organizer": { "@type": "Organization", "name": "KU-DETA", "url": "https://www.instagram.com/ku_deta_gifu/" }
   }
   </script>
 
@@ -322,9 +360,9 @@
     };
     window.addEventListener('scroll', onScroll); onScroll();
 
-    // カウントダウン（2025/10/05 18:00 JST）
+    // カウントダウン（2025/10/05 17:30 JST）
     const cd = document.getElementById('countdown');
-    const target = new Date('2025-10-05T18:00:00+09:00').getTime();
+    const target = new Date('2025-10-05T17:30:00+09:00').getTime();
     const tick = () => {
       const now = Date.now();
       const d = Math.max(0, target - now);
@@ -352,7 +390,7 @@
       });
     });
 
-    // 予約フォーム送信（Formspree）: 成功時にサンクスメッセージを画面表示
+  // 予約フォーム送信（Formspree）
     const form = document.getElementById('booking');
     const statusEl = document.getElementById('form-status');
     const thankEl  = document.getElementById('thank-you');
@@ -366,7 +404,7 @@
           const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
           if (res.ok) {
             form.style.display = 'none';
-            if (thankEl) thankEl.style.display = 'block'; // ← ここで「ご予約ありがとうございます！」を表示
+            if (thankEl) thankEl.style.display = 'block';
           } else {
             if (statusEl) statusEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
           }

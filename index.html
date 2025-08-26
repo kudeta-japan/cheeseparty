@@ -11,11 +11,11 @@
   <meta property="og:title" content="CHEESE WONDERLAND｜KU-DETA" />
   <meta property="og:description" content="10/5(日) 17:30–20:00｜1ドリンク付 ¥3,000。とろけて・食べて・遊べるチーズテーマパーク！" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kudeta-japan.github.io/cheesewonderland/" />
-  <meta property="og:image" content="https://kudeta-japan.github.io/cheesewonderland/img/ogp.jpg" />
+  <meta property="og:url" content="https://kudeta-japan.github.io/cheeseparty/" />
+  <meta property="og:image" content="https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg" />
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="/img/favicon.png">
+  <link rel="icon" href="img/favicon.png">
 
   <style>
     :root{
@@ -158,7 +158,7 @@
       <h2>イベント概要</h2>
       <p class="muted">CHEESE WONDERLAND は、チーズを主役にした“周遊型”ミニテーマパーク。ライブでとろける <b>Raclette Slider</b>、チーズ滝の <b>Chicago Waterfall</b>、遊べるディップ <b>Melty Dip Pot</b>、DIYピザの<b>Cheese Lab</b>、ふわ仕上げの<b>Espuma Basque</b>まで、写真映えと体験をセットで楽しめます。</p>
 
-      <!-- ギャラリー（イメージ画像） -->
+      <!-- ギャラリー -->
       <div class="gallery">
         <figure>
           <img src="img/gal_raclette.jpg" alt="ラクレットをとろりと削ってのせる様子（イメージ）" loading="lazy">
@@ -201,7 +201,7 @@
           <div><h3>Espuma Basque Cloud</h3><p class="muted">5inchホールの1/12カットに、ふわエスプーマをライブ仕上げ。ライトな甘さで締め。</p></div>
         </div>
       </div>
-    
+      <p class="muted" style="margin-top:8px">ウェルカム：フレッシュチーズ×蜂蜜/果実/ナッツの“前菜ステーション”をご用意。</p>
     </div>
   </section>
 
@@ -263,12 +263,15 @@
           <p class="muted">JR岐阜駅南口より徒歩10分。共同駐車場25台あり</p>
         </div>
         <div class="card">
-          <!-- 正式埋め込み：Googleマップ「共有 → 地図を埋め込む」で取得した iframe の src を貼る -->
           <div style="position:relative; padding-top:56.25%">
-            <iframe title="map"
-              src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.939989419715!2d136.751321!3d35.406738000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003a9344700a515%3A0xea519f26c2204667!2sCheese%20Meat%20Mania%20KU-DETA!5e0!3m2!1sja!2sjp!4v1756170363300!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+            <iframe
+              title="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.939989419715!2d136.751321!3d35.406738000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003a9344700a515%3A0xea519f26c2204667!2sCheese%20Meat%20Mania%20KU-DETA!5e0!3m2!1sja!2sjp!4v1756170363300!5m2!1sja!2sjp"
               style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px"
-              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
         </div>
       </div>
@@ -287,9 +290,9 @@
       <form id="booking" class="card" method="POST" action="https://formspree.io/f/xpwlgjrn" novalidate>
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
         <div class="grid" style="grid-template-columns:1fr 1fr; gap:14px">
-          <label>お名前*<br><input name="name" required></label>
-          <label>メール*<br><input type="email" name="email" required></label>
-          <label>電話番号*<br><input type="tel" name="tel" required></label>
+          <label>お名前*<br><input name="name" required autocomplete="name"></label>
+          <label>メール*<br><input type="email" name="email" required autocomplete="email"></label>
+          <label>電話番号*<br><input type="tel" name="tel" required autocomplete="tel"></label>
           <label>人数*<br><input type="number" name="people" min="1" max="6" required value="2"></label>
 
           <!-- オプション -->
@@ -340,14 +343,14 @@
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
     "eventStatus": "https://schema.org/EventScheduled",
     "location": { "@type": "Place", "name": "KU-DETA", "address": "岐阜市加納新本町3-1-1 SPAZIO B1" },
-    "image": ["https://kudeta-japan.github.io/cheesewonderland/img/ogp.jpg"],
+    "image": ["https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg"],
     "description": "とろけて・食べて・遊べるチーズテーマパーク。Raclette Slider / Chicago Waterfall / Melty Dip Pot / Cheese Lab / Espuma Basque.",
     "offers": {
       "@type": "Offer",
       "price": "3000",
       "priceCurrency": "JPY",
       "availability": "https://schema.org/InStock",
-      "url": "https://kudeta-japan.github.io/cheesewonderland/"
+      "url": "https://kudeta-japan.github.io/cheeseparty/"
     },
     "organizer": { "@type": "Organization", "name": "KU-DETA", "url": "https://www.instagram.com/ku_deta_gifu/" }
   }
@@ -393,7 +396,7 @@
       });
     });
 
-    // 予約フォーム送信（Formspree）: 成功時にサンクスメッセージ表示
+    // 予約フォーム送信（Formspree）
     const form = document.getElementById('booking');
     const statusEl = document.getElementById('form-status');
     const thankEl  = document.getElementById('thank-you');

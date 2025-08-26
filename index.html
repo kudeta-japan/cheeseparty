@@ -15,7 +15,6 @@
   <meta property="og:image" content="https://kudeta-japan.github.io/cheesewonderland/img/ogp.jpg" />
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Favicon（任意） -->
   <link rel="icon" href="/img/favicon.png">
 
   <style>
@@ -28,6 +27,7 @@
     a{color:inherit;text-decoration:none}
     img{max-width:100%;height:auto;display:block}
     .container{max-width:var(--max);margin-inline:auto;padding:0 20px}
+
     header{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.6);backdrop-filter: blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;gap:12px;align-items:center;font-weight:700}
@@ -44,6 +44,7 @@
     .hero h1{font-size: clamp(32px, 5vw, 56px);line-height:1.05;margin:0 0 18px}
     .hero p.lead{font-size:clamp(16px,2.2vw,20px);color:var(--sub);margin:0 0 26px}
     .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,209,102,.12);color:#ffe08a;border:1px solid rgba(255,209,102,.35);font-weight:700}
+
     .grid{display:grid;gap:18px}
     @media(min-width:880px){.grid-2{grid-template-columns:1.2fr .8fr}}
 
@@ -67,14 +68,20 @@
     .section h2{font-size: clamp(24px, 3.6vw, 36px);margin:0 0 14px}
     .muted{color:var(--sub)}
 
+    /* 5大アトラクション（カード整列） */
     .attractions{display:grid;gap:18px}
     @media(min-width:900px){.attractions{grid-template-columns:repeat(3,1fr)}}
-    .attr{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
-    .attr img{width:92px;height:92px;border-radius:12px;object-fit:cover}
+    .attr{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;
+      padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .attr img{width:92px;height:92px;border-radius:12px;object-fit:cover;object-position:center}
+    .attr h3{margin:0 0 4px}
+    .attr p{margin:0;color:var(--sub);line-height:1.6}
 
+    /* ギャラリー（上段3枚は比率を統一） */
     .gallery{display:grid;gap:12px;margin-top:14px}
     @media(min-width:900px){.gallery{grid-template-columns:2fr 1fr 1fr}}
     .gallery figure{margin:0;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
+    .gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
     .gallery figcaption{font-size:.85rem;color:var(--sub);padding:8px 10px}
 
     .pricing{display:grid;gap:18px}
@@ -136,7 +143,7 @@
         <ol class="muted" style="line-height:1.8">
           <li>17:30 受付・パスポート配布・フォト</li>
           <li>17:45 オープニング（注意/遊び方）</li>
-          <li>17:50–19:15 フリー周遊 </li>
+          <li>17:50–19:15 フリー周遊</li>
           <li>19:15–19:35 コンプリートアトラクション</li>
           <li>19:35 フィナーレ：パレード一斉演出</li>
           <li>19:50 ラストオーダー → 20:00 クローズ</li>
@@ -150,12 +157,6 @@
     <div class="container">
       <h2>イベント概要</h2>
       <p class="muted">CHEESE WONDERLAND は、チーズを主役にした“周遊型”ミニテーマパーク。ライブでとろける <b>Raclette Slider</b>、チーズ滝の <b>Chicago Waterfall</b>、遊べるディップ <b>Melty Dip Pot</b>、DIYピザの<b>Cheese Lab</b>、ふわ仕上げの<b>Espuma Basque</b>まで、写真映えと体験をセットで楽しめます。</p>
-
-      <div class="features" style="margin-top:18px">
-        <div class="feature"><h3>① ライブ演出</h3><p>削る・伸びる・仕上げる。目の前で“とろける瞬間”。</p></div>
-        <div class="feature"><h3>② 周遊パスポート</h3><p>5アトラクションを巡ってスタンプ集め。</p></div>
-        <div class="feature"><h3>③ カジュアル＆フォト</h3><p>難しくない、でも“映える”。友だちとも一人でも。</p></div>
-      </div>
 
       <!-- ギャラリー（イメージ画像） -->
       <div class="gallery">
@@ -189,7 +190,7 @@
         </div>
         <div class="attr">
           <img src="img/attr_meltydip.jpg" alt="ディップポットとルーレットトッピング（イメージ）">
-          <div><h3>Melty Dip Pot</h3><p class="muted">ルーレットでトッピング  → ディップ開始。</p></div>
+          <div><h3>Melty Dip Pot</h3><p class="muted">ルーレットでトッピング → ディップ開始。</p></div>
         </div>
         <div class="attr">
           <img src="img/attr_lab.jpg" alt="4種チーズから選べるミニピザDIY（イメージ）">
@@ -200,8 +201,7 @@
           <div><h3>Espuma Basque Cloud</h3><p class="muted">5inchホールの1/12カットに、ふわエスプーマをライブ仕上げ。ライトな甘さで締め。</p></div>
         </div>
       </div>
-
-      <p class="muted" style="margin-top:8px">ウェルカム：フレッシュチーズ×蜂蜜/果実/ナッツの“前菜ステーション”をご用意。</p>
+    
     </div>
   </section>
 
@@ -211,7 +211,7 @@
       <div class="pricing" style="margin-top:12px">
         <div class="plan" style="border:2px solid var(--brand)">
           <h3>入場パス（1ドリンク付）</h3>
-          <p class="muted">周遊アトラクション＋ウェルカム前菜</p>
+          <p class="muted">周遊アトラクション</p>
           <p><b>¥3,000</b>（税込）</p>
           <ul class="muted">
             <li>追加ドリンク +¥500〜</li>
@@ -231,13 +231,13 @@
           <ul class="muted" style="margin:0 0 8px 18px">
             <li>日時：2025/10/05(日) 17:30–20:00（所要150分）</li>
             <li>会場：KU-DETA, Gifu</li>
-            <li>定員：20–30名（先着）</li>
+            <li>定員：40名（先着）</li>
           </ul>
         </div>
       </div>
       <div class="cta">
         <a class="btn" href="#reserve-form">このページから予約</a>
-        <a class="btn ghost" href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">Instagramで最新情報</a>
+        <a class="btn ghost" href="https://line.me/R/ti/p/@rzd2388u" target="_blank" rel="noopener">LINEで問い合わせ</a>
       </div>
       <p class="muted" style="margin-top:8px">キャンセルポリシー：前日50%／当日100%</p>
     </div>
@@ -249,7 +249,7 @@
       <div class="faq" style="margin-top:10px">
         <details><summary>一人参加でもOK？</summary><p class="muted">大歓迎です。席はミックスでご案内します。</p></details>
         <details><summary>アルコール必須？</summary><p class="muted">ソフトドリンクも選べます。20歳未満の方への提供は行いません。</p></details>
-             </div>
+      </div>
     </div>
   </section>
 
@@ -263,8 +263,12 @@
           <p class="muted">JR岐阜駅南口より徒歩10分。共同駐車場25台あり</p>
         </div>
         <div class="card">
+          <!-- 正式埋め込み：Googleマップ「共有 → 地図を埋め込む」で取得した iframe の src を貼る -->
           <div style="position:relative; padding-top:56.25%">
-            <iframe title="map" src="https://www.google.com/maps/embed?pb=!1m18!..." style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe title="map"
+              src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.939989419715!2d136.751321!3d35.406738000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003a9344700a515%3A0xea519f26c2204667!2sCheese%20Meat%20Mania%20KU-DETA!5e0!3m2!1sja!2sjp!4v1756170363300!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+              style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px"
+              allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -287,11 +291,15 @@
           <label>メール*<br><input type="email" name="email" required></label>
           <label>電話番号*<br><input type="tel" name="tel" required></label>
           <label>人数*<br><input type="number" name="people" min="1" max="6" required value="2"></label>
-          <label style="grid-column:1/-1">オプション（任意）<br>
+
+          <!-- オプション -->
+          <fieldset style="grid-column:1/-1; border:1px solid rgba(255,255,255,.12); border-radius:12px; padding:12px">
+            <legend class="muted" style="padding:0 6px">オプション（任意）</legend>
             <label style="display:flex;gap:8px;align-items:center;margin:.4rem 0"><input type="checkbox" name="opt_extra_cheese" value="yes"> 追いチーズ +¥200</label>
             <label style="display:flex;gap:8px;align-items:center;margin:.2rem 0"><input type="checkbox" name="opt_extra_drink" value="yes"> 追加ドリンク +¥600〜</label>
-          </label>
-         <label style="grid-column:1/-1">備考<br><textarea name="note" rows="4" placeholder="お連れさまの人数変更、写真NGなど"></textarea></label>
+          </fieldset>
+
+          <label style="grid-column:1/-1">備考<br><textarea name="note" rows="4" placeholder="お連れさまの人数変更、写真NGなど"></textarea></label>
           <label style="grid-column:1/-1; display:flex; gap:10px; align-items:flex-start">
             <input type="checkbox" required style="margin-top:6px">
             <span class="muted">個人情報の取り扱いに同意します（予約確認の目的でのみ利用します）。</span>
@@ -306,7 +314,7 @@
         <p id="form-status" class="muted" style="margin-top:10px"></p>
       </form>
 
-      <p class="muted" style="margin-top:12px">お問い合わせ：Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> / Tel 058-xxx-xxxx</p>
+      <p class="muted" style="margin-top:12px">お問い合わせ：Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> / LINE <a href="https://line.me/R/ti/p/@rzd2388u" target="_blank" rel="noopener">@rzd2388u</a></p>
     </div>
   </section>
 
@@ -385,7 +393,7 @@
       });
     });
 
-  // 予約フォーム送信（Formspree）
+    // 予約フォーム送信（Formspree）: 成功時にサンクスメッセージ表示
     const form = document.getElementById('booking');
     const statusEl = document.getElementById('form-status');
     const thankEl  = document.getElementById('thank-you');

@@ -119,6 +119,21 @@
       .hero h1{font-size: clamp(28px, 7vw, 44px);}
       .hero p.lead{font-size: clamp(14px, 4vw, 18px);}
     }
+      <!-- ================= HERO ================= -->
+ <!-- TOP IMAGE -->
+  /* ポスター画像を調整 */
+.hero-poster {
+  max-width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-poster img {
+  width: 100%;
+  max-height: 480px;    /* 高さ制限をつける（例：480px） */
+  object-fit: cover;    /* 中央をトリミングしてバランス良く */
+  border-bottom: 2px solid rgba(255,255,255,.12); /* 区切り線（任意） */
+}
   </style>
 </head>
 <body>
@@ -136,24 +151,12 @@
     </div>
   </header>
 
-  <!-- ================= HERO ================= -->
- <!-- TOP IMAGE -->
-  /* ポスター画像を調整 */
-.hero-poster {
-  max-width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
 
-.hero-poster img {
-  width: 100%;
-  max-height: 480px;    /* 高さ制限をつける（例：480px） */
-  object-fit: cover;    /* 中央をトリミングしてバランス良く */
-  border-bottom: 2px solid rgba(255,255,255,.12); /* 区切り線（任意） */
-}
-<section id="top">
-  <img src="img/ogp.jpg" alt="CHEESE WONDERLAND メインビジュアル"
-       style="width:100%; height:auto; display:block;">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-poster">
+    <img src="img/ogp.jpg?v=3" alt="CHEESE WONDERLAND" />
+  </div>
 </section>
     <div class="container inner grid grid-2">
       <div>

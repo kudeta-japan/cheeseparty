@@ -335,6 +335,22 @@
           <label>メール*<br><input type="email" name="email" required autocomplete="email"></label>
           <label>電話番号*<br><input type="tel" name="tel" required autocomplete="tel"></label>
           <label>人数*<br><input type="number" name="people" min="1" max="6" required value="2"></label>
+          <!-- 年代（任意） -->
+<label>年代
+  <select name="age_group">
+    <option value="" selected>選択してください（任意）</option>
+    <option>10代</option>
+    <option>20~24歳</option>
+     <option>25~29歳</option>
+     <option>30代</option>
+    <option>40代〜</option>
+  </select>
+</label>
+
+<!-- 備考（自由入力・任意） -->
+<label>備考（アレルギーや希望など）
+  <textarea name="note" rows="4" placeholder="例：チーズアレルギー有、到着が少し遅れます など"></textarea>
+</label>
 
           <label style="grid-column:1/-1">備考<br>
             <textarea name="note" rows="4" placeholder="お連れさまの人数変更、写真NGなど"></textarea>

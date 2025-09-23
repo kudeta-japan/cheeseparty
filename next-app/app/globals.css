@@ -157,9 +157,10 @@ header {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/img/hero_cheese.jpg') center/cover no-repeat;
-  opacity: 0.25;
-  filter: grayscale(0.05) saturate(1.2);
+/* GH Pages は /cheeseparty 配下。basePath を含める */
+  background: url('/cheeseparty/img/hero_cheese.jpg') center/cover no-repeat;
+ opacity: 0.35; /* 少し明るめに */
+  filter: grayscale(0) saturate(1.15);
   mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.75), transparent 70%);
 }
 
@@ -167,7 +168,9 @@ header {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5, 5, 16, 0.3), rgba(5, 5, 16, 0.9) 60%);
+  /* 暗幕も薄めに調整（必要ならさらに下げてOK） */
+  background: linear-gradient(180deg, rgba(5,5,16,.15), rgba(5,5,16,.65) 60%);
+ 
 }
 
 .hero-inner {

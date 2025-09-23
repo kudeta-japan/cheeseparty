@@ -8,7 +8,7 @@ export default function Home() {
       <section id="highlights" className="relative min-h-[70vh] overflow-hidden">
         {/* basePath を自動考慮してくれる */}
         <Image
-          src="/img/hero-cheese.jpg"
+          src="img/hero-cheese.jpg"
           alt="CHEESE WONDERLAND"
           fill
           priority

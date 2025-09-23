@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.png" },
   openGraph: {
     url: "https://kudeta-japan.github.io/cheeseparty/",
-    images: ["/img/ogp.jpg"],
+    images: ["img/ogp.jpg"],
   },
 };
 

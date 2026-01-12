@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>KU-DETA 採用LP（HTML版まとめ）</title>
+  <meta name="description" content="KU-DETA 採用LP（HTMLのみでのプロトタイプ）。" />
+
+  <style>
+    :root{
+      --bg:#fbfaf8;
+      --panel:#ffffff;
+      --ink:#18181b;
+      --muted:#52525b;
+      --line:rgba(24,24,27,.12);
+      --softline:rgba(24,24,27,.08);
+      --accent:#d58a3a;         /* KU-DETAっぽい“温かい琥珀” */
+      --accent2:#f2c18b;        /* 明るい補助 */
+      --shadow:0 18px 60px rgba(0,0,0,.10);
+      --shadow2:0 8px 22px rgba(0,0,0,.08);
+      --r:22px;
+      --r2:30px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(1100px 460px at 70% 10%, rgba(213,138,58,.18), transparent 65%),
+        radial-gradient(900px 420px at 20% 0%, rgba(242,193,139,.20), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    @media (min-width: 768px){ .container{padding:0 28px} }
+
+    /* Sticky Top */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,250,248,.7);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--softline);
+    }
+    .topbar-inner{
+      height:64px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:800;letter-spacing:.02em;
+    }
+    .brand-badge{
+      width:12px;height:12px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 24px rgba(213,138,58,.45);
+    }
+    .nav{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+    }
+    .nav a{
+      font-size:13px;color:rgba(24,24,27,.78);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid transparent;
+      transition:.18s;
+    }
+    .nav a:hover{
+      border-color:var(--softline);
+      background:rgba(255,255,255,.55);
+    }
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:16px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid transparent;
+      transition: .18s;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      color:#2b1a08;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 12px 28px rgba(213,138,58,.18);
+    }
+    .btn-primary:hover{transform: translateY(-1px)}
+    .btn-ghost{
+      background: rgba(255,255,255,.68);
+      border-color: var(--softline);
+      color: rgba(24,24,27,.9);
+    }
+    .btn-ghost:hover{transform: translateY(-1px); box-shadow: var(--shadow2)}
+    .btn-wide{width:100%}
+    @media (min-width: 640px){ .btn-wide{width:auto} }
+
+    /* Hero */
+    .hero{
+      padding: 28px 0 18px;
+    }
+    .hero-wrap{
+      border-radius: var(--r2);
+      overflow:hidden;
+      background:
+        radial-gradient(900px 360px at 20% 0%, rgba(242,193,139,.26), transparent 60%),
+        radial-gradient(860px 420px at 85% 5%, rgba(213,138,58,.18), transparent 62%),
+        rgba(255,255,255,.60);
+      border: 1px solid var(--softline);
+      box-shadow: var(--shadow);
+    }
+    .hero-inner{
+      padding: 26px 18px 18px;
+      display:grid;gap:18px;
+    }
+    @media (min-width: 980px){
+      .hero-inner{grid-template-columns: 1.05fr .95fr; padding: 34px 34px 28px;}
+    }
+
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding: 8px 12px;border-radius:999px;
+      font-size:12px;font-weight:800;
+      color: rgba(24,24,27,.85);
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--softline);
+    }
+    .h1{
+      margin:14px 0 0;
+      font-size: clamp(28px, 4.4vw, 52px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+      font-weight:900;
+    }
+    .lead{
+      margin:12px 0 0;
+      max-width: 48ch;
+      color: rgba(24,24,27,.72);
+      font-size: 16px;
+    }
+
+    .chips{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding: 8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color: rgba(24,24,27,.8);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(24,24,27,.12);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.55) inset,
+        0 10px 22px rgba(0,0,0,.06);
+    }
+    .chip::before{
+      content:"";
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 16px rgba(213,138,58,.35);
+    }
+
+    .cta-row{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+
+    /* “写真なしでも雰囲気”を作る疑似ビジュアル */
+    .mock{
+      border-radius: var(--r);
+      border:1px solid var(--softline);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0)),
+        radial-gradient(520px 320px at 60% 10%, rgba(213,138,58,.22), transparent 60%),
+        radial-gradient(520px 300px at 15% 45%, rgba(242,193,139,.28), transparent 55%),
+        rgba(255,255,255,.55);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      position:relative;
+      min-height: 280px;
+    }
+    .mock::after{
+      content:"";
+      position:absolute; inset:-60px -40px auto auto;
+      width:260px;height:260px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 60%);
+      filter: blur(1px);
+      opacity:.9;
+      transform: rotate(12deg);
+    }
+    .mock-top{
+      padding: 12px 14px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid var(--softline);
+      background: rgba(255,255,255,.55);
+    }
+    .mock-nav{
+      display:flex;gap:10px;align-items:center;
+      font-size:12px;color:rgba(24,24,27,.65);
+    }
+    .mock-nav span{padding:6px 10px;border-radius:999px;border:1px solid transparent}
+    .mock-nav span.active{
+      border-color: rgba(213,138,58,.25);
+      background: rgba(213,138,58,.10);
+      color: rgba(43,26,8,.92);
+      font-weight:800;
+    }
+    .mock-body{
+      padding: 16px 14px 14px;
+      display:grid;gap:12px;
+    }
+    .mock-title{
+      font-weight:900;letter-spacing:-.02em;
+      font-size: 18px; line-height:1.25;
+      color: rgba(24,24,27,.9);
+    }
+    .mock-lines{color:rgba(24,24,27,.62); font-size:13px}
+    .mock-lines i{display:block;height:10px;border-radius:999px;background:rgba(24,24,27,.08);margin:7px 0}
+    .mock-grid{
+      margin-top: 8px;
+      display:grid;gap:10px;
+      grid-template-columns: 1.2fr .8fr;
+    }
+    .mock-card{
+      border:1px solid var(--softline);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+      padding: 12px;
+      min-height: 86px;
+    }
+    .mock-card strong{display:block;font-size:12px;opacity:.85}
+    .mock-card p{margin:6px 0 0;font-size:12px;color:rgba(24,24,27,.64)}
+    .mock-thumbs{
+      display:grid;gap:10px; grid-template-columns: repeat(3, 1fr);
+    }
+    .thumb{
+      aspect-ratio:4/3;
+      border-radius: 16px;
+      border:1px solid rgba(24,24,27,.08);
+      background:
+        radial-gradient(160px 120px at 70% 25%, rgba(213,138,58,.28), transparent 60%),
+        radial-gradient(160px 120px at 25% 70%, rgba(242,193,139,.28), transparent 60%),
+        rgba(255,255,255,.55);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      opacity:.95;
+    }
+
+    /* Sections */
+    .section{padding: 28px 0}
+    @media (min-width: 768px){ .section{padding: 42px 0} }
+
+    .section-title{
+      font-size: clamp(18px, 2.6vw, 26px);
+      letter-spacing:-.02em;
+      margin:0;
+      font-weight:900;
+    }
+    .section-sub{
+      margin:10px 0 0;
+      color: rgba(24,24,27,.70);
+      max-width: 60ch;
+      font-size: 14px;
+    }
+
+    /* Cards grid */
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      gap:14px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: repeat(2, 1fr); gap:16px;}
+    }
+    .card{
+      display:flex;flex-direction:column;gap:10px;
+      padding: 18px;
+      border-radius: var(--r);
+      border: 1px solid var(--softline);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow2);
+      transition: .18s;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{transform: translateY(-2px)}
+    .card::after{
+      content:"";
+      position:absolute; inset:auto -60px -70px auto;
+      width:220px;height:220px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(213,138,58,.18), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .card h3{
+      margin:0;
+      font-size: 16px;
+      font-weight:900;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin:0;
+      color: rgba(24,24,27,.72);
+      font-size: 14px;
+      line-height:1.7;
+      max-width: 64ch;
+    }
+    .card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+    .card-tags .chip{box-shadow:none;background:rgba(255,255,255,.8)}
+    .card-link{
+      margin-top: 6px;
+      display:inline-flex;align-items:center;gap:6px;
+      font-weight:900;
+      font-size: 13px;
+      color: rgba(24,24,27,.88);
+    }
+    .card-link span{transition:.18s}
+    .card:hover .card-link span{transform: translateX(3px)}
+
+    /* Reassurance */
+    .reassure{
+      margin-top: 16px;
+      border-radius: var(--r2);
+      border:1px solid var(--softline);
+      background: rgba(255,255,255,.66);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    @media (min-width: 768px){ .reassure{padding: 22px} }
+    .bullets{margin:12px 0 0; padding-left: 0; list-style:none; display:grid; gap:10px}
+    .bullets li{
+      display:flex;gap:10px;align-items:flex-start;
+      color: rgba(24,24,27,.78);
+      font-size: 14px;
+    }
+    .tick{
+      width:20px;height:20px;border-radius:999px;
+      background: rgba(213,138,58,.14);
+      border:1px solid rgba(213,138,58,.24);
+      display:inline-flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+      box-shadow: 0 10px 18px rgba(213,138,58,.08);
+    }
+    .tick svg{width:13px;height:13px;fill:rgba(43,26,8,.9)}
+
+    /* CTA block */
+    .cta{
+      border-radius: var(--r2);
+      border:1px solid var(--softline);
+      background:
+        radial-gradient(900px 320px at 15% 0%, rgba(242,193,139,.25), transparent 60%),
+        radial-gradient(920px 360px at 85% 0%, rgba(213,138,58,.20), transparent 62%),
+        rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    @media (min-width: 768px){ .cta{padding: 26px} }
+    .cta h3{margin:0;font-size: clamp(18px, 2.6vw, 26px);font-weight:900;letter-spacing:-.02em}
+    .cta p{margin:10px 0 0;color:rgba(24,24,27,.72);max-width:60ch;font-size:14px}
+    .cta-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .footer{
+      padding: 22px 0 26px;
+      color: rgba(24,24,27,.55);
+      font-size: 12px;
+    }
+    .footer a{border-bottom:1px solid rgba(24,24,27,.18)}
+  </style>
+</head>
+
+<body>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="KU-DETA RECRUIT">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>KU-DETA RECRUIT</span>
+      </div>
+
+      <nav class="nav" aria-label="ページ内リンク">
+        <a href="#select">働き方を選ぶ</a>
+        <a href="#reassurance">不安をほどく</a>
+        <a class="btn btn-primary" href="#contact">応募・相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-inner">
+
+          <!-- left -->
+          <div>
+            <div class="pill">岐阜・KU-DETA｜採用</div>
+
+            <h1 class="h1">はじめてでも、<br>ちゃんと働ける。</h1>
+
+            <p class="lead">
+              KU-DETAは、いまのあなたに合った働き方を、<br>
+              現場で一緒につくっていくお店です。
+            </p>
+
+            <div class="chips" aria-label="特徴">
+              <span class="chip">未経験OK</span>
+              <span class="chip">まずは相談だけでもOK</span>
+              <span class="chip">飲食の仕事</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary btn-wide" href="#contact">話を聞いてみる</a>
+              <a class="btn btn-ghost btn-wide" href="#select">働き方を選ぶ</a>
+            </div>
+          </div>
+
+          <!-- right (image-less mood mock) -->
+          <aside class="mock" aria-label="雰囲気モック（画像なし）">
+            <div class="mock-top">
+              <div class="mock-nav">
+                <span class="active">採用</span>
+                <span>お店</span>
+                <span>Q&A</span>
+              </div>
+              <a class="btn btn-primary" style="padding:10px 12px;border-radius:14px;font-size:12px" href="#contact">応募する</a>
+            </div>
+
+            <div class="mock-body">
+              <div class="mock-title">忙しいけど、ちゃんと楽しい。</div>
+              <div class="mock-lines" aria-hidden="true">
+                <i></i><i></i><i style="width:72%"></i>
+              </div>
+
+              <div class="mock-grid">
+                <div class="mock-card">
+                  <strong>KU-DETAの空気</strong>
+                  <p>ひとりじゃ回らない。困ったら、誰かが助ける。</p>
+                </div>
+                <div class="mock-card">
+                  <strong>小さくても誠実に</strong>
+                  <p>できるまで、一緒にやる。</p>
+                </div>
+              </div>
+
+              <div class="mock-thumbs" aria-label="サムネイル（画像なし）">
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECT / Card Grid -->
+  <section class="section" id="select">
+    <div class="container">
+      <h2 class="section-title">あなたに近い働き方を選んでください</h2>
+      <p class="section-sub">いちばん近い働き方から、まずは見てみてください。</p>
+
+      <div class="grid" role="list">
+        <a class="card" href="#contact" role="listitem" aria-label="はじめてでも、ちゃんと働ける">
+          <h3>はじめてでも、ちゃんと働ける</h3>
+          <p>できるか不安でも大丈夫。最初から一緒にやります。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">未経験</span>
+            <span class="chip">学生</span>
+          </div>
+          <div class="card-link">はじめて向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="慣れてきた今だから、仕事がちょっと楽しくなる">
+          <h3>慣れてきた今だから、仕事がちょっと楽しくなる</h3>
+          <p>忙しい時間が「やり切った」に変わる。経験は、これからにも活きます。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">大学生</span>
+            <span class="chip">現場の達成感</span>
+          </div>
+          <div class="card-link">大学生向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="無理なく、また働ける">
+          <h3>無理なく、また働ける</h3>
+          <p>完璧じゃなくていい。生活に合う形を一緒に考えます。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">ブランクOK</span>
+            <span class="chip">両立</span>
+          </div>
+          <div class="card-link">両立向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="飲食で、ちゃんと働きたい人へ">
+          <h3>飲食で、ちゃんと働きたい人へ</h3>
+          <p>現場を大事にして、人を育てていく。小さくても、誠実に。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">正社員</span>
+            <span class="chip">フリーター歓迎</span>
+            <span class="chip">調理学生OK</span>
+          </div>
+          <div class="card-link">社員向けを見る <span>→</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reassurance -->
+  <section class="section" id="reassurance">
+    <div class="container">
+      <h2 class="section-title">いきなり決めなくて大丈夫です</h2>
+      <p class="section-sub">まずは話を聞くだけでもOK。あなたに合う形を一緒に考えます。</p>
+
+      <div class="reassure">
+        <ul class="bullets">
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>まずは話を聞くだけでもOK</span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>不安や希望は、そのまま言って大丈夫</span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>あなたに合う形を一緒に考えます</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="cta">
+        <h3>まずは、話してみませんか。</h3>
+        <p>
+          現場のこと、働き方のこと。<br>
+          そのまま話せたらと思っています。
+        </p>
+
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-wide" href="https://line.me/" target="_blank" rel="noopener">話を聞いてみる</a>
+          <a class="btn btn-ghost btn-wide" href="#select">応募・相談する</a>
+        </div>
+
+        <p style="margin-top:10px;color:rgba(24,24,27,.58);font-size:12px">
+          ※リンク先（LINE等）は仮です。実運用のURLに置き換えてください。
+        </p>
+      </div>
+
+      <div class="footer">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+          <div>© KU-DETA</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#top">ページ上へ</a>
+            <a href="#contact">応募・相談</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    // 簡易スムーススクロール（HTML版の体験向上）
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(!el) return;
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top:y, behavior:'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

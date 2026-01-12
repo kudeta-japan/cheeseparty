@@ -2,480 +2,591 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <!-- iPhoneノッチ対応 -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>CHEESE WONDERLAND｜KU-DETA</title>
-  <meta name="description" content="とろけて・食べて・遊べるチーズテーマパーク。10/5(日) 17:30–20:00｜1ドリンク付 ¥3,000｜岐阜・KU-DETAで開催。Raclette Slider / Chicago Waterfall / Melty Dip Pot ほかライブ演出多数。男性・お一人様歓迎。"> 
-  <meta name="format-detection" content="telephone=no">
-
-  <!-- OGP/Twitter -->
-  <meta property="og:title" content="CHEESE WONDERLAND｜KU-DETA" />
-  <meta property="og:description" content="10/5(日) 17:30–20:00｜1ドリンク付 ¥3,000。とろけて・食べて・遊べるチーズテーマパーク！" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://kudeta-japan.github.io/cheeseparty/" />
-  <meta property="og:image" content="https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg" />
-  <meta name="twitter:card" content="summary_large_image">
-
-  <link rel="icon" href="img/favicon.png">
+  <title>KU-DETA 採用LP（HTML版まとめ）</title>
+  <meta name="description" content="KU-DETA 採用LP（HTMLのみでのプロトタイプ）。" />
 
   <style>
     :root{
-      --bg:#0b0b10; --surface:#121219; --muted:#1b1b26; --brand:#ffd166; --accent:#ef476f; --ok:#06d6a0; --text:#f2f2f7; --sub:#b5b5c2;
-      --max:1100px; --radius:20px; --shadow:0 10px 30px rgba(0,0,0,.25);
+      --bg:#fbfaf8;
+      --panel:#ffffff;
+      --ink:#18181b;
+      --muted:#52525b;
+      --line:rgba(24,24,27,.12);
+      --softline:rgba(24,24,27,.08);
+      --accent:#d58a3a;         /* KU-DETAっぽい“温かい琥珀” */
+      --accent2:#f2c18b;        /* 明るい補助 */
+      --shadow:0 18px 60px rgba(0,0,0,.10);
+      --shadow2:0 8px 22px rgba(0,0,0,.08);
+      --r:22px;
+      --r2:30px;
+      --max:1120px;
     }
-    html,body{margin:0;background:linear-gradient(180deg,#0a0a0f,#11111a);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI","YuGothic",Meiryo,sans-serif;
-      overflow-x:hidden;}
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic", "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(1100px 460px at 70% 10%, rgba(213,138,58,.18), transparent 65%),
+        radial-gradient(900px 420px at 20% 0%, rgba(242,193,139,.20), transparent 60%),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;height:auto;display:block}
-    .container{max-width:var(--max);margin-inline:auto;
-      padding-left:max(16px,env(safe-area-inset-left));
-      padding-right:max(16px,env(safe-area-inset-right));}
+    img{max-width:100%;display:block}
 
-    header{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.6);backdrop-filter: blur(8px);
-      border-bottom:1px solid rgba(255,255,255,.06);
-      padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);}
-    .nav{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:10px;flex-wrap:wrap}
-    .brand{display:flex;gap:12px;align-items:center;font-weight:700;white-space:nowrap}
-    .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--brand);box-shadow:0 0 20px var(--brand)}
-    .nav .links{display:flex;gap:18px;align-items:center;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
-    .nav .links::-webkit-scrollbar{display:none}
-    .nav a{opacity:.95}
-    .btn{display:inline-flex;gap:.5rem;align-items:center;padding:.9rem 1.1rem;border-radius:14px;background:var(--brand);
-      color:#1a1a1a;font-weight:700;box-shadow:var(--shadow);transition:transform .15s ease}
-    .btn:hover{transform:translateY(-2px)}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--text)}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px}
+    @media (min-width: 768px){ .container{padding:0 28px} }
 
-    .hero{position:relative;}
-    .hero::before{content:"";position:absolute;inset:0;background:url('img/hero_cheese.jpg') center/cover no-repeat;opacity:.28;filter:grayscale(.1) contrast(1.12)}
-    .hero .inner{position:relative;padding:84px 0 60px}
-    .hero h1{font-size: clamp(32px, 5vw, 56px);line-height:1.05;margin:0 0 18px}
-    .hero p.lead{font-size:clamp(16px,2.2vw,20px);color:var(--sub);margin:0 0 26px}
-    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,209,102,.12);color:#ffe08a;border:1px solid rgba(255,209,102,.35);font-weight:700}
-
-    .grid{display:grid;gap:18px}
-    @media(min-width:880px){.grid-2{grid-template-columns:1.2fr .8fr}}
-
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
-    .kpi{background:var(--muted);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;text-align:center}
-    .kpi b{display:block;font-size:clamp(18px,3.6vw,28px)}
-
-    .countdown{display:flex;gap:10px;margin:18px 0 4px}
-    .cd{background:var(--muted);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;text-align:center;min-width:68px}
-    .cd b{display:block;font-size:22px}
-
-    .features{display:grid;gap:18px}
-    @media(min-width:720px){.features{grid-template-columns:repeat(3,1fr)}}
-    .feature{padding:18px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08)}
-    .feature h3{margin:.2rem 0 .4rem}
-    .feature p{color:var(--sub);margin:0}
-
-    .section{padding:64px 0}
-    .section h2{font-size: clamp(24px, 3.6vw, 36px);margin:0 0 14px}
-    .muted{color:var(--sub)}
-
-    /* 5大アトラクション（カード整列） */
-    .attractions{display:grid;gap:18px}
-    @media(min-width:900px){.attractions{grid-template-columns:repeat(3,1fr)}}
-    .attr{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;
-      padding:16px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
-    .attr img{width:92px;height:92px;border-radius:12px;object-fit:cover;object-position:center}
-    .attr h3{margin:0 0 4px}
-    .attr p{margin:0;color:var(--sub);line-height:1.6}
-
-    /* ギャラリー（3枚を同じ比率に） */
-    .gallery{display:grid;gap:12px;margin-top:14px}
-    @media(min-width:900px){.gallery{grid-template-columns:2fr 1fr 1fr}}
-    .gallery figure{margin:0;overflow:hidden;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03)}
-    .gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-    .gallery figcaption{font-size:.85rem;color:var(--sub);padding:8px 10px}
-
-    .pricing{display:grid;gap:18px}
-    @media(min-width:860px){.pricing{grid-template-columns:repeat(3,1fr)}}
-    .plan{padding:22px;border-radius:16px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08)}
-
-    .faq details{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px}
-    .faq details+details{margin-top:12px}
-
-    .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
-
-    footer{border-top:1px solid rgba(255,255,255,.08);padding:36px 0;color:var(--sub)}
-    .sns{display:flex;gap:12px}
-
-    /* inputs */
-    input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);color:var(--text);outline:none}
-    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 2px rgba(255,209,102,.35)}
-    input[type="checkbox"]{width:18px;height:18px}
-
-    /* 日本語の折返し最適化（はみ出し防止） */
-    .hero h1,.hero p.lead{line-break:strict;word-break:keep-all;overflow-wrap:anywhere}
-
-    /* かなり小さい幅では“予約する”優先 */
-    @media (max-width: 480px){
-      .nav .links a:not(.btn){display:none}
-      .hero h1{font-size: clamp(28px, 7vw, 44px);}
-      .hero p.lead{font-size: clamp(14px, 4vw, 18px);}
+    /* Sticky Top */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,250,248,.7);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--softline);
     }
-      <!-- ================= HERO ================= -->
- <!-- TOP IMAGE -->
-  /* ポスター画像を調整 */
-.hero-poster {
-  max-width: 100%;
-  overflow: hidden;
-  text-align: center;
-}
+    .topbar-inner{
+      height:64px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:14px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;
+      font-weight:800;letter-spacing:.02em;
+    }
+    .brand-badge{
+      width:12px;height:12px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 24px rgba(213,138,58,.45);
+    }
+    .nav{
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end;
+    }
+    .nav a{
+      font-size:13px;color:rgba(24,24,27,.78);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid transparent;
+      transition:.18s;
+    }
+    .nav a:hover{
+      border-color:var(--softline);
+      background:rgba(255,255,255,.55);
+    }
 
-.hero-poster img {
-  width: 100%;
-  max-height: 480px;    /* 高さ制限をつける（例：480px） */
-  object-fit: cover;    /* 中央をトリミングしてバランス良く */
-  border-bottom: 2px solid rgba(255,255,255,.12); /* 区切り線（任意） */
-}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:12px 16px;border-radius:16px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid transparent;
+      transition: .18s;
+      white-space:nowrap;
+    }
+    .btn-primary{
+      color:#2b1a08;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 12px 28px rgba(213,138,58,.18);
+    }
+    .btn-primary:hover{transform: translateY(-1px)}
+    .btn-ghost{
+      background: rgba(255,255,255,.68);
+      border-color: var(--softline);
+      color: rgba(24,24,27,.9);
+    }
+    .btn-ghost:hover{transform: translateY(-1px); box-shadow: var(--shadow2)}
+    .btn-wide{width:100%}
+    @media (min-width: 640px){ .btn-wide{width:auto} }
+
+    /* Hero */
+    .hero{
+      padding: 28px 0 18px;
+    }
+    .hero-wrap{
+      border-radius: var(--r2);
+      overflow:hidden;
+      background:
+        radial-gradient(900px 360px at 20% 0%, rgba(242,193,139,.26), transparent 60%),
+        radial-gradient(860px 420px at 85% 5%, rgba(213,138,58,.18), transparent 62%),
+        rgba(255,255,255,.60);
+      border: 1px solid var(--softline);
+      box-shadow: var(--shadow);
+    }
+    .hero-inner{
+      padding: 26px 18px 18px;
+      display:grid;gap:18px;
+    }
+    @media (min-width: 980px){
+      .hero-inner{grid-template-columns: 1.05fr .95fr; padding: 34px 34px 28px;}
+    }
+
+    .pill{
+      display:inline-flex;align-items:center;gap:10px;
+      padding: 8px 12px;border-radius:999px;
+      font-size:12px;font-weight:800;
+      color: rgba(24,24,27,.85);
+      background: rgba(255,255,255,.72);
+      border: 1px solid var(--softline);
+    }
+    .h1{
+      margin:14px 0 0;
+      font-size: clamp(28px, 4.4vw, 52px);
+      line-height:1.12;
+      letter-spacing:-.02em;
+      font-weight:900;
+    }
+    .lead{
+      margin:12px 0 0;
+      max-width: 48ch;
+      color: rgba(24,24,27,.72);
+      font-size: 16px;
+    }
+
+    .chips{margin-top:14px; display:flex; gap:8px; flex-wrap:wrap}
+    .chip{
+      display:inline-flex;align-items:center;gap:8px;
+      padding: 8px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      color: rgba(24,24,27,.8);
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(24,24,27,.12);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,.55) inset,
+        0 10px 22px rgba(0,0,0,.06);
+    }
+    .chip::before{
+      content:"";
+      width:8px;height:8px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      box-shadow: 0 0 16px rgba(213,138,58,.35);
+    }
+
+    .cta-row{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+
+    /* “写真なしでも雰囲気”を作る疑似ビジュアル */
+    .mock{
+      border-radius: var(--r);
+      border:1px solid var(--softline);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0)),
+        radial-gradient(520px 320px at 60% 10%, rgba(213,138,58,.22), transparent 60%),
+        radial-gradient(520px 300px at 15% 45%, rgba(242,193,139,.28), transparent 55%),
+        rgba(255,255,255,.55);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+      position:relative;
+      min-height: 280px;
+    }
+    .mock::after{
+      content:"";
+      position:absolute; inset:-60px -40px auto auto;
+      width:260px;height:260px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 60%);
+      filter: blur(1px);
+      opacity:.9;
+      transform: rotate(12deg);
+    }
+    .mock-top{
+      padding: 12px 14px;
+      display:flex;align-items:center;justify-content:space-between;
+      border-bottom:1px solid var(--softline);
+      background: rgba(255,255,255,.55);
+    }
+    .mock-nav{
+      display:flex;gap:10px;align-items:center;
+      font-size:12px;color:rgba(24,24,27,.65);
+    }
+    .mock-nav span{padding:6px 10px;border-radius:999px;border:1px solid transparent}
+    .mock-nav span.active{
+      border-color: rgba(213,138,58,.25);
+      background: rgba(213,138,58,.10);
+      color: rgba(43,26,8,.92);
+      font-weight:800;
+    }
+    .mock-body{
+      padding: 16px 14px 14px;
+      display:grid;gap:12px;
+    }
+    .mock-title{
+      font-weight:900;letter-spacing:-.02em;
+      font-size: 18px; line-height:1.25;
+      color: rgba(24,24,27,.9);
+    }
+    .mock-lines{color:rgba(24,24,27,.62); font-size:13px}
+    .mock-lines i{display:block;height:10px;border-radius:999px;background:rgba(24,24,27,.08);margin:7px 0}
+    .mock-grid{
+      margin-top: 8px;
+      display:grid;gap:10px;
+      grid-template-columns: 1.2fr .8fr;
+    }
+    .mock-card{
+      border:1px solid var(--softline);
+      border-radius: 18px;
+      background: rgba(255,255,255,.62);
+      padding: 12px;
+      min-height: 86px;
+    }
+    .mock-card strong{display:block;font-size:12px;opacity:.85}
+    .mock-card p{margin:6px 0 0;font-size:12px;color:rgba(24,24,27,.64)}
+    .mock-thumbs{
+      display:grid;gap:10px; grid-template-columns: repeat(3, 1fr);
+    }
+    .thumb{
+      aspect-ratio:4/3;
+      border-radius: 16px;
+      border:1px solid rgba(24,24,27,.08);
+      background:
+        radial-gradient(160px 120px at 70% 25%, rgba(213,138,58,.28), transparent 60%),
+        radial-gradient(160px 120px at 25% 70%, rgba(242,193,139,.28), transparent 60%),
+        rgba(255,255,255,.55);
+      box-shadow: 0 8px 18px rgba(0,0,0,.06);
+      opacity:.95;
+    }
+
+    /* Sections */
+    .section{padding: 28px 0}
+    @media (min-width: 768px){ .section{padding: 42px 0} }
+
+    .section-title{
+      font-size: clamp(18px, 2.6vw, 26px);
+      letter-spacing:-.02em;
+      margin:0;
+      font-weight:900;
+    }
+    .section-sub{
+      margin:10px 0 0;
+      color: rgba(24,24,27,.70);
+      max-width: 60ch;
+      font-size: 14px;
+    }
+
+    /* Cards grid */
+    .grid{
+      margin-top: 16px;
+      display:grid;
+      gap:14px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: repeat(2, 1fr); gap:16px;}
+    }
+    .card{
+      display:flex;flex-direction:column;gap:10px;
+      padding: 18px;
+      border-radius: var(--r);
+      border: 1px solid var(--softline);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow2);
+      transition: .18s;
+      position:relative;
+      overflow:hidden;
+    }
+    .card:hover{transform: translateY(-2px)}
+    .card::after{
+      content:"";
+      position:absolute; inset:auto -60px -70px auto;
+      width:220px;height:220px;border-radius:999px;
+      background: radial-gradient(circle at 30% 30%, rgba(213,138,58,.18), transparent 60%);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .card h3{
+      margin:0;
+      font-size: 16px;
+      font-weight:900;
+      letter-spacing:-.01em;
+    }
+    .card p{
+      margin:0;
+      color: rgba(24,24,27,.72);
+      font-size: 14px;
+      line-height:1.7;
+      max-width: 64ch;
+    }
+    .card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+    .card-tags .chip{box-shadow:none;background:rgba(255,255,255,.8)}
+    .card-link{
+      margin-top: 6px;
+      display:inline-flex;align-items:center;gap:6px;
+      font-weight:900;
+      font-size: 13px;
+      color: rgba(24,24,27,.88);
+    }
+    .card-link span{transition:.18s}
+    .card:hover .card-link span{transform: translateX(3px)}
+
+    /* Reassurance */
+    .reassure{
+      margin-top: 16px;
+      border-radius: var(--r2);
+      border:1px solid var(--softline);
+      background: rgba(255,255,255,.66);
+      box-shadow: var(--shadow2);
+      padding: 18px;
+    }
+    @media (min-width: 768px){ .reassure{padding: 22px} }
+    .bullets{margin:12px 0 0; padding-left: 0; list-style:none; display:grid; gap:10px}
+    .bullets li{
+      display:flex;gap:10px;align-items:flex-start;
+      color: rgba(24,24,27,.78);
+      font-size: 14px;
+    }
+    .tick{
+      width:20px;height:20px;border-radius:999px;
+      background: rgba(213,138,58,.14);
+      border:1px solid rgba(213,138,58,.24);
+      display:inline-flex;align-items:center;justify-content:center;
+      flex:0 0 auto;
+      box-shadow: 0 10px 18px rgba(213,138,58,.08);
+    }
+    .tick svg{width:13px;height:13px;fill:rgba(43,26,8,.9)}
+
+    /* CTA block */
+    .cta{
+      border-radius: var(--r2);
+      border:1px solid var(--softline);
+      background:
+        radial-gradient(900px 320px at 15% 0%, rgba(242,193,139,.25), transparent 60%),
+        radial-gradient(920px 360px at 85% 0%, rgba(213,138,58,.20), transparent 62%),
+        rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    @media (min-width: 768px){ .cta{padding: 26px} }
+    .cta h3{margin:0;font-size: clamp(18px, 2.6vw, 26px);font-weight:900;letter-spacing:-.02em}
+    .cta p{margin:10px 0 0;color:rgba(24,24,27,.72);max-width:60ch;font-size:14px}
+    .cta-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .footer{
+      padding: 22px 0 26px;
+      color: rgba(24,24,27,.55);
+      font-size: 12px;
+    }
+    .footer a{border-bottom:1px solid rgba(24,24,27,.18)}
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot"></span>CHEESE WONDERLAND</div>
-      <nav class="links">
-        <a href="#about">概要</a>
-        <a href="#attractions">アトラクション</a>
-        <a href="#tickets">チケット</a>
-        <a href="#faq">FAQ</a>
-        <a href="#access">アクセス</a>
-        <a class="btn" href="#reserve-form">予約する</a>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand" aria-label="KU-DETA RECRUIT">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <span>KU-DETA RECRUIT</span>
+      </div>
+
+      <nav class="nav" aria-label="ページ内リンク">
+        <a href="#select">働き方を選ぶ</a>
+        <a href="#reassurance">不安をほどく</a>
+        <a class="btn btn-primary" href="#contact">応募・相談する</a>
       </nav>
     </div>
   </header>
 
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="container">
+      <div class="hero-wrap">
+        <div class="hero-inner">
 
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-poster">
-    <img src="img/ogp.jpg?v=3" alt="CHEESE WONDERLAND" />
-  </div>
-</section>
-    <div class="container inner grid grid-2">
-      <div>
-        <span class="chip">10/5(日) 17:30–20:00｜岐阜 KU-DETA</span>
-        <h1>とろけて・食べて・遊べるチーズテーマパーク<br><small style="font-size:65%">Melt, Taste & Play!</small></h1>
-        <p class="lead">日曜夕方を“テーマパーク発想”で楽しむ周遊イベント。カジュアルで楽しいライブ演出が満載。男性・お一人様も歓迎です。</p>
-        <div class="countdown" id="countdown" aria-label="開催までのカウントダウン"></div>
-        <div class="cta">
-          <a class="btn" id="reserve" href="#reserve-form">今すぐ予約</a>
-          <a class="btn ghost" href="#attractions">見どころを見る</a>
+          <!-- left -->
+          <div>
+            <div class="pill">岐阜・KU-DETA｜採用</div>
+
+            <h1 class="h1">はじめてでも、<br>ちゃんと働ける。</h1>
+
+            <p class="lead">
+              KU-DETAは、いまのあなたに合った働き方を、<br>
+              現場で一緒につくっていくお店です。
+            </p>
+
+            <div class="chips" aria-label="特徴">
+              <span class="chip">未経験OK</span>
+              <span class="chip">まずは相談だけでもOK</span>
+              <span class="chip">飲食の仕事</span>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn btn-primary btn-wide" href="#contact">話を聞いてみる</a>
+              <a class="btn btn-ghost btn-wide" href="#select">働き方を選ぶ</a>
+            </div>
+          </div>
+
+          <!-- right (image-less mood mock) -->
+          <aside class="mock" aria-label="雰囲気モック（画像なし）">
+            <div class="mock-top">
+              <div class="mock-nav">
+                <span class="active">採用</span>
+                <span>お店</span>
+                <span>Q&A</span>
+              </div>
+              <a class="btn btn-primary" style="padding:10px 12px;border-radius:14px;font-size:12px" href="#contact">応募する</a>
+            </div>
+
+            <div class="mock-body">
+              <div class="mock-title">忙しいけど、ちゃんと楽しい。</div>
+              <div class="mock-lines" aria-hidden="true">
+                <i></i><i></i><i style="width:72%"></i>
+              </div>
+
+              <div class="mock-grid">
+                <div class="mock-card">
+                  <strong>KU-DETAの空気</strong>
+                  <p>ひとりじゃ回らない。困ったら、誰かが助ける。</p>
+                </div>
+                <div class="mock-card">
+                  <strong>小さくても誠実に</strong>
+                  <p>できるまで、一緒にやる。</p>
+                </div>
+              </div>
+
+              <div class="mock-thumbs" aria-label="サムネイル（画像なし）">
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+                <div class="thumb"></div>
+              </div>
+            </div>
+          </aside>
+
         </div>
-        <div class="kpis">
-          <div class="kpi"><span class="muted">参加費</span><b>¥3,000（1ドリンク付）</b></div>
-          <div class="kpi"><span class="muted">定員</span><b>40名</b></div>
-          <div class="kpi"><span class="muted">会場</span><b>KU-DETA（岐阜市）</b></div>
-        </div>
-      </div>
-      <div class="card">
-        <h3 style="margin-top:4px">当日の流れ</h3>
-        <ol class="muted" style="line-height:1.8">
-          <li>17:30 受付・パスポート配布・フォト</li>
-          <li>17:45 オープニング（注意/遊び方）</li>
-          <li>17:50–19:15 フリー周遊</li>
-          <li>19:15–19:35 コンプリートアトラクション</li>
-          <li>19:35 フィナーレ：パレード一斉演出</li>
-          <li>19:50 ラストオーダー → 20:00 クローズ</li>
-        </ol>
-        <p class="muted" style="margin-top:8px">ハッシュタグは <b>#CheeseWonderland</b> <b>#KUDETA</b></p>
       </div>
     </div>
- 
+  </section>
 
-  <!-- ================= ABOUT ================= -->
-  <section id="about" class="section">
+  <!-- SELECT / Card Grid -->
+  <section class="section" id="select">
     <div class="container">
-      <h2>イベント概要</h2>
-      <p class="muted">CHEESE WONDERLAND は、チーズを主役にした“周遊型”ミニテーマパーク。ライブでとろける <b>Raclette Slider</b>、チーズ滝の <b>Chicago Waterfall</b>、遊べるディップ <b>Melty Dip Pot</b>、DIYピザの<b>Cheese Lab</b>、ふわ仕上げの<b>Espuma Basque</b>まで、写真映えと体験をセットで楽しめます。</p>
+      <h2 class="section-title">あなたに近い働き方を選んでください</h2>
+      <p class="section-sub">いちばん近い働き方から、まずは見てみてください。</p>
 
-      <!-- ギャラリー -->
-      <div class="gallery">
-        <figure>
-          <img src="img/gal_raclette.jpg" alt="ラクレットをとろりと削ってのせる様子（イメージ）" loading="lazy">
-          <figcaption>Raclette Slider（イメージ）</figcaption>
-        </figure>
-        <figure>
-          <img src="img/gal_chicago.jpg" alt="シカゴピザを持ち上げてチーズが滝のように伸びる（イメージ）" loading="lazy">
-          <figcaption>Chicago Waterfall（イメージ）</figcaption>
-        </figure>
-        <figure>
-          <img src="img/gal_lab.jpg" alt="30cmのピザにチーズをのせてDIYする（イメージ）" loading="lazy">
-          <figcaption>Cheese Lab – DIY Quadro Pizza（イメージ）</figcaption>
-        </figure>
+      <div class="grid" role="list">
+        <a class="card" href="#contact" role="listitem" aria-label="はじめてでも、ちゃんと働ける">
+          <h3>はじめてでも、ちゃんと働ける</h3>
+          <p>できるか不安でも大丈夫。最初から一緒にやります。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">未経験</span>
+            <span class="chip">学生</span>
+          </div>
+          <div class="card-link">はじめて向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="慣れてきた今だから、仕事がちょっと楽しくなる">
+          <h3>慣れてきた今だから、仕事がちょっと楽しくなる</h3>
+          <p>忙しい時間が「やり切った」に変わる。経験は、これからにも活きます。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">大学生</span>
+            <span class="chip">現場の達成感</span>
+          </div>
+          <div class="card-link">大学生向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="無理なく、また働ける">
+          <h3>無理なく、また働ける</h3>
+          <p>完璧じゃなくていい。生活に合う形を一緒に考えます。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">ブランクOK</span>
+            <span class="chip">両立</span>
+          </div>
+          <div class="card-link">両立向けを見る <span>→</span></div>
+        </a>
+
+        <a class="card" href="#contact" role="listitem" aria-label="飲食で、ちゃんと働きたい人へ">
+          <h3>飲食で、ちゃんと働きたい人へ</h3>
+          <p>現場を大事にして、人を育てていく。小さくても、誠実に。</p>
+          <div class="card-tags" aria-label="タグ">
+            <span class="chip">正社員</span>
+            <span class="chip">フリーター歓迎</span>
+            <span class="chip">調理学生OK</span>
+          </div>
+          <div class="card-link">社員向けを見る <span>→</span></div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- ================= ATTRACTIONS ================= -->
-  <section id="attractions" class="section">
+  <!-- Reassurance -->
+  <section class="section" id="reassurance">
     <div class="container">
-      <h2>5大アトラクション</h2>
-      <div class="attractions" style="margin-top:10px">
-        <div class="attr">
-          <img src="img/attr_raclette.jpg" alt="半玉ラクレットを削るライブ（イメージ）">
-          <div><h3>Raclette Slider</h3><p class="muted">半玉ラクレットを目の前でとろ〜り。ポテトなどにオン。1卓あたり3–4分（写真タイム込み）。</p></div>
-        </div>
-        <div class="attr">
-          <img src="img/attr_chicago.jpg" alt="シカゴピザのリフトアップでチーズが伸びる（イメージ）">
-          <div><h3>Chicago Waterfall</h3><p class="muted">5inchシカゴピザの“チーズ滝”。リフトアップで伸び対決。カット60秒＋撮影60秒。</p></div>
-        </div>
-        <div class="attr">
-          <img src="img/attr_meltydip.jpg" alt="ディップポットとルーレットトッピング（イメージ）">
-          <div><h3>Melty Dip Pot</h3><p class="muted">ルーレットでトッピング → ディップ開始。</p></div>
-        </div>
-        <div class="attr">
-          <img src="img/attr_lab.jpg" alt="4種チーズから選べるミニピザDIY（イメージ）">
-          <div><h3>Cheese Lab – DIY Quadro Pizza</h3><p class="muted">モッツァレラ／ゴルゴンゾーラ／ゴーダ／パルミジャーノ/カマンベール/クリームチーズからセレクト。焼き上がりをパチリ。</p></div>
-        </div>
-        <div class="attr">
-          <img src="img/attr_espuma.jpg" alt="バスクチーズケーキにエスプーマをのせる（イメージ）">
-          <div><h3>Espuma Basque Cloud</h3><p class="muted">5inchホールの1/12カットに、ふわエスプーマをライブ仕上げ。ライトな甘さで締め。</p></div>
-        </div>
+      <h2 class="section-title">いきなり決めなくて大丈夫です</h2>
+      <p class="section-sub">まずは話を聞くだけでもOK。あなたに合う形を一緒に考えます。</p>
+
+      <div class="reassure">
+        <ul class="bullets">
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>まずは話を聞くだけでもOK</span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>不安や希望は、そのまま言って大丈夫</span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l-1.4 1.4 5.7 5.6L20.5 7.7 19.1 6.3z"/></svg>
+            </span>
+            <span>あなたに合う形を一緒に考えます</span>
+          </li>
+        </ul>
       </div>
-      <p class="muted" style="margin-top:8px">ウェルカム：フレッシュチーズ×蜂蜜/果実/ナッツの“前菜ステーション”をご用意。</p>
     </div>
   </section>
 
-  <!-- ================= TICKETS ================= -->
-  <section id="tickets" class="section">
+  <!-- CTA -->
+  <section class="section" id="contact">
     <div class="container">
-      <h2>チケット</h2>
-      <div class="pricing" style="margin-top:12px">
-        <div class="plan" style="border:2px solid var(--brand)">
-          <h3>入場パス（1ドリンク付）</h3>
-          <p class="muted">周遊アトラクション</p>
-          <p><b>¥3,000</b>（税込）</p>
-          <ul class="muted">
-            <li>追加ドリンク +¥500〜</li>
-            <li>男性・お一人様歓迎</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>注意事項</h3>
-          <ul class="muted" style="margin:0 0 8px 18px">
-            <li>20歳未満の方へのアルコール提供はありません（年齢確認あり）。</li>
-            <li>アレルギーは予約時にご申告ください。</li>
-            <li>ライブ演出につき、スムーズな進行ご協力ください。</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>開催情報</h3>
-          <ul class="muted" style="margin:0 0 8px 18px">
-            <li>日時：2025/10/05(日) 17:30–20:00（所要150分）</li>
-            <li>会場：KU-DETA, Gifu</li>
-            <li>定員：40名（先着）</li>
-          </ul>
-        </div>
-      </div>
       <div class="cta">
-        <a class="btn" href="#reserve-form">このページから予約</a>
-        <a class="btn ghost" href="https://line.me/R/ti/p/@rzd2388u" target="_blank" rel="noopener">LINEで問い合わせ</a>
-      </div>
-      <p class="muted" style="margin-top:8px">キャンセルポリシー：前日50%／当日100%</p>
-    </div>
-  </section>
+        <h3>まずは、話してみませんか。</h3>
+        <p>
+          現場のこと、働き方のこと。<br>
+          そのまま話せたらと思っています。
+        </p>
 
-  <!-- ================= FAQ ================= -->
-  <section id="faq" class="section">
-    <div class="container">
-      <h2>よくあるご質問</h2>
-      <div class="faq" style="margin-top:10px">
-        <details><summary>一人参加でもOK？</summary><p class="muted">大歓迎です。席はミックスでご案内します。</p></details>
-        <details><summary>アルコール必須？</summary><p class="muted">ソフトドリンクも選べます。20歳未満の方への提供は行いません。</p></details>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ACCESS ================= -->
-  <section id="access" class="section">
-    <div class="container">
-      <h2>アクセス</h2>
-      <p class="muted">KU-DETA｜岐阜市加納新本町3-1-1 SPAZIO B1 / 058-274-2212</p>
-      <div class="grid" style="grid-template-columns:1fr 1fr; gap:18px">
-        <div class="card">
-          <h3>電車でお越しの方</h3>
-          <p class="muted">JR岐阜駅南口より徒歩10分。共同駐車場25台あり</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-wide" href="https://line.me/" target="_blank" rel="noopener">話を聞いてみる</a>
+          <a class="btn btn-ghost btn-wide" href="#select">応募・相談する</a>
         </div>
-        <div class="card">
-          <div style="position:relative; padding-top:56.25%">
-            <iframe
-              title="map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3251.939989419715!2d136.751321!3d35.406738000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003a9344700a515%3A0xea519f26c2204667!2sCheese%20Meat%20Mania%20KU-DETA!5e0!3m2!1sja!2sjp!4v1756170363300!5m2!1sja!2sjp"
-              style="position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:12px"
-              allowfullscreen
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+
+        <p style="margin-top:10px;color:rgba(24,24,27,.58);font-size:12px">
+          ※リンク先（LINE等）は仮です。実運用のURLに置き換えてください。
+        </p>
+      </div>
+
+      <div class="footer">
+        <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center">
+          <div>© KU-DETA</div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="#top">ページ上へ</a>
+            <a href="#contact">応募・相談</a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
-
-  <!-- ================= RESERVE FORM ================= -->
-  <section id="reserve-form" class="section">
-    <div class="container">
-      <h2>予約フォーム</h2>
-
-      <p id="thank-you" style="display:none; font-weight:700; color:#ffd166; font-size:1.1rem;" aria-live="polite">
-        ご予約ありがとうございます！
-      </p>
-
-      <form id="booking" class="card" method="POST" action="https://formspree.io/f/xpwlgjrn" novalidate>
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="grid" style="grid-template-columns:1fr 1fr; gap:14px">
-          <label>お名前*<br><input name="name" required autocomplete="name"></label>
-          <label>メール*<br><input type="email" name="email" required autocomplete="email"></label>
-          <label>電話番号*<br><input type="tel" name="tel" required autocomplete="tel"></label>
-          <label>人数*<br><input type="number" name="people" min="1" max="6" required value="2"></label>
-          <!-- 年代（任意） -->
-<label>年代
-  <select name="age_group">
-    <option value="" selected>選択してください（任意）</option>
-    <option>10代</option>
-    <option>20~24歳</option>
-     <option>25~29歳</option>
-     <option>30代</option>
-    <option>40代〜</option>
-  </select>
-</label>
-
-<!-- 備考（自由入力・任意） -->
-<label>備考（アレルギーや希望など）
-  <textarea name="note" rows="4" placeholder="例：チーズアレルギー有、到着が少し遅れます など"></textarea>
-</label>
-
-          <label style="grid-column:1/-1">備考<br>
-            <textarea name="note" rows="4" placeholder="お連れさまの人数変更、写真NGなど"></textarea>
-          </label>
-
-          <!-- 個人情報チェック（見やすい枠） -->
-          <div style="grid-column:1/-1;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px;background:rgba(255,255,255,.03)">
-            <label style="display:flex;gap:10px;align-items:flex-start;line-height:1.6">
-              <input type="checkbox" required style="margin-top:4px;flex-shrink:0">
-              <span class="muted">個人情報の取り扱いに同意します。<br>（予約確認の目的でのみ利用します）</span>
-            </label>
-          </div>
-        </div>
-        <input type="hidden" name="_subject" value="[KU-DETA] CHEESE WONDERLAND 予約">
-        <input type="hidden" name="event" value="CHEESE WONDERLAND 2025-10-05">
-        <div class="cta">
-          <button class="btn" type="submit">送信する</button>
-          <button class="btn ghost" type="reset">リセット</button>
-        </div>
-        <p id="form-status" class="muted" style="margin-top:10px"></p>
-      </form>
-
-      <p class="muted" style="margin-top:12px">お問い合わせ：Instagram <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener">@ku_deta_gifu</a> / LINE <a href="https://line.me/R/ti/p/@rzd2388u" target="_blank" rel="noopener">@rzd2388u</a></p>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-      <small>© 2025 KU-DETA</small>
-      <div class="sns">
-        <a href="https://www.instagram.com/ku_deta_gifu/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-        <a href="mailto:kudeta.kanou@gmail.com" aria-label="Email">Email</a>
-        <a href="tel:0582742212" aria-label="Tel">Tel</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 構造化データ（イベント） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Event",
-    "name": "CHEESE WONDERLAND",
-    "startDate": "2025-10-05T17:30:00+09:00",
-    "endDate": "2025-10-05T20:00:00+09:00",
-    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "location": { "@type": "Place", "name": "KU-DETA", "address": "岐阜市加納新本町3-1-1 SPAZIO B1" },
-    "image": ["https://kudeta-japan.github.io/cheeseparty/img/ogp.jpg"],
-    "description": "とろけて・食べて・遊べるチーズテーマパーク。Raclette Slider / Chicago Waterfall / Melty Dip Pot / Cheese Lab / Espuma Basque.",
-    "offers": {
-      "@type": "Offer",
-      "price": "3000",
-      "priceCurrency": "JPY",
-      "availability": "https://schema.org/InStock",
-      "url": "https://kudeta-japan.github.io/cheeseparty/"
-    },
-    "organizer": { "@type": "Organization", "name": "KU-DETA", "url": "https://www.instagram.com/ku_deta_gifu/" }
-  }
-  </script>
 
   <script>
-    // スクロール時フェードイン（必要なら .fade を付与して使う）
-    const onScroll = () => {
-      document.querySelectorAll('.fade').forEach(el => {
-        const r = el.getBoundingClientRect();
-        if (r.top < innerHeight - 80) el.classList.add('show');
-      });
-    };
-    addEventListener('scroll', onScroll); onScroll();
-
-    // カウントダウン（2025/10/05 17:30 JST）
-    const cd = document.getElementById('countdown');
-    const target = new Date('2025-10-05T17:30:00+09:00').getTime();
-    const tick = () => {
-      const now = Date.now();
-      const d = Math.max(0, target - now);
-      const days = Math.floor(d/86400000);
-      const hours = Math.floor((d%86400000)/3600000);
-      const mins = Math.floor((d%3600000)/60000);
-      const secs = Math.floor((d%60000)/1000);
-      if (cd) cd.innerHTML = `
-        <div class="cd"><b>${days}</b><small class="muted">日</small></div>
-        <div class="cd"><b>${hours}</b><small class="muted">時間</small></div>
-        <div class="cd"><b>${mins}</b><small class="muted">分</small></div>
-        <div class="cd"><b>${secs}</b><small class="muted">秒</small></div>
-      `;
-    };
-    tick(); setInterval(tick, 1000);
-
-    // スムーススクロール
+    // 簡易スムーススクロール（HTML版の体験向上）
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const href = a.getAttribute('href');
-        if (href.length>1){
-          e.preventDefault();
-          document.querySelector(href)?.scrollIntoView({behavior:'smooth'});
-        }
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        if(!id) return;
+        const el = document.getElementById(id);
+        if(!el) return;
+        e.preventDefault();
+        const y = el.getBoundingClientRect().top + window.scrollY - 64;
+        window.scrollTo({ top:y, behavior:'smooth' });
       });
     });
-
-    // 予約フォーム送信（Formspree）
-    const form = document.getElementById('booking');
-    const statusEl = document.getElementById('form-status');
-    const thankEl  = document.getElementById('thank-you');
-
-    if (form) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        if (statusEl) statusEl.textContent = '送信中…';
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-          if (res.ok) {
-            form.style.display = 'none';
-            if (thankEl) thankEl.style.display = 'block';
-          } else {
-            if (statusEl) statusEl.textContent = '送信に失敗しました。時間をおいて再度お試しください。';
-          }
-        } catch {
-          if (statusEl) statusEl.textContent = 'ネットワークエラーが発生しました。';
-        }
-      });
-    }
   </script>
+
 </body>
 </html>
